@@ -1,4 +1,4 @@
-import { EventId, listener, listen } from "@listener-js/listener"
+import { EventId, listener } from "@listener-js/listener"
 
 export class Log {
   public static defaultLevel: string = "info"
