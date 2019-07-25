@@ -1,4 +1,4 @@
-import { EventId } from "@listener-js/listener"
+import { EventId, Listener } from "@listener-js/listener"
 
 export class Log {
   public static defaultLevel: string = "info"
@@ -42,6 +42,14 @@ export class Log {
     const level = Log.eventLevels[root] || "debug"
 
     this.logEvent(id.slice(0, -1), level, ...value)
+  }
+
+  public static listen(
+    { listen }: Listener, options: Record<string, any>
+  ): void {
+    if (options.logAll) {
+      listen("*", "Log.all")
+    }
   }
 
   public static log(
