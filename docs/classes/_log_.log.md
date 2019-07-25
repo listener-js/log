@@ -18,9 +18,9 @@
 
 ### Methods
 
+* [all](_log_.log.md#static-all)
 * [isLevel](_log_.log.md#static-islevel)
 * [log](_log_.log.md#static-log)
-* [logAny](_log_.log.md#static-logany)
 * [logEvent](_log_.log.md#static-logevent)
 * [logLevel](_log_.log.md#static-loglevel)
 * [summarize](_log_.log.md#static-summarize)
@@ -57,11 +57,28 @@ Defined in log.ts:24
 
 ## Methods
 
+### `Static` all
+
+▸ **all**(`id`: `EventId`, ...`value`: any[]): *void*
+
+Defined in log.ts:27
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`id` | `EventId` |
+`...value` | any[] |
+
+**Returns:** *void*
+
+___
+
 ### `Static` isLevel
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:91
+Defined in log.ts:98
 
 **Parameters:**
 
@@ -77,7 +94,7 @@ ___
 
 ▸ **log**(`id`: `EventId`, `level?`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:27
+Defined in log.ts:44
 
 **Parameters:**
 
@@ -91,28 +108,11 @@ Name | Type |
 
 ___
 
-### `Static` logAny
-
-▸ **logAny**(`id`: `EventId`, ...`value`: any[]): *void*
-
-Defined in log.ts:44
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`id` | `EventId` |
-`...value` | any[] |
-
-**Returns:** *void*
-
-___
-
 ### `Static` logEvent
 
 ▸ **logEvent**(`id`: `EventId`, `level`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:58
+Defined in log.ts:63
 
 **Parameters:**
 
@@ -130,7 +130,7 @@ ___
 
 ▸ **logLevel**(`id`: `EventId`, `level`: string): *void*
 
-Defined in log.ts:80
+Defined in log.ts:86
 
 **Parameters:**
 
@@ -147,7 +147,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:95
+Defined in log.ts:102
 
 **Parameters:**
 

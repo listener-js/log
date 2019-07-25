@@ -1,4 +1,4 @@
-import { EventId, listener } from "@listener-js/listener"
+import { EventId, listener, listen } from "@listener-js/listener"
 import { Log } from "../"
 
 class Test {
@@ -6,6 +6,7 @@ class Test {
 }
 
 listener(Test, "Test", "hi")
+listen("*", "Log.all")
 
 test("log", (): void => {
   Log.logLevel(null, "trace")
@@ -15,7 +16,7 @@ test("log", (): void => {
   Log.log(null, "warn", "hi")
   Log.log(null, "anything")
   Log.log(null)
-  Log.log(null, "debug", { key: { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9 } })
+  Log.log(null, "debug", { array: [], object: {}, string: "string" })
 })
 
 test("log any event at log level debug", (): void => {
