@@ -2,10 +2,14 @@ import { EventId, listener, listen } from "@listener-js/listener"
 import { Log } from "../"
 
 class Test {
-  public static hi(id: EventId) {}
+  public static listeners = ["hi"]
+
+  public static hi(id: EventId): EventId {
+    return id
+  }
 }
 
-listener(Test, "Test", "hi")
+listener({ Log, Test })
 listen("*", "Log.all")
 
 test("log", (): void => {

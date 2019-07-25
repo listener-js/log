@@ -1,10 +1,10 @@
-import { EventId, listener } from "@listener-js/listener"
+import { EventId } from "@listener-js/listener"
 
 export class Log {
   public static defaultLevel: string = "info"
 
   public static eventLevels: Record<string, string> = {}
-  
+
   public static levelEmojis: Record<string, string> = {
     debug: "🐛",
     error: "🛑",
@@ -12,7 +12,7 @@ export class Log {
     trace: "💻",
     warn: "⚠️",
   }
-  
+
   public static levelSpaces: Record<string, string> = {
     debug: "",
     error: "",
@@ -20,9 +20,12 @@ export class Log {
     trace: "",
     warn: " ",
   }
-  
+
   public static levels: string[] =
     ["trace", "debug", "info", "warn", "error"]
+  
+  public static listeners: string[] =
+    ["all", "log", "logEvent", "logLevel"]
 
   public static all(
     id: EventId,
@@ -74,7 +77,7 @@ export class Log {
     ) {
       return
     }
-    
+
     // eslint-disable-next-line no-console
     console.log(
       Log.levelEmojis[level] + Log.levelSpaces[level],
@@ -119,5 +122,3 @@ export class Log {
 
 Log.defaultLevel = Log.isLevel(process.env.LOG) ?
   process.env.LOG : "info"
-
-listener(Log, "Log", "all", "log", "logEvent", "logLevel")

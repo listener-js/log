@@ -15,6 +15,7 @@
 * [defaultLevel](_log_.log.md#static-defaultlevel)
 * [eventLevels](_log_.log.md#static-eventlevels)
 * [levels](_log_.log.md#static-levels)
+* [listeners](_log_.log.md#static-listeners)
 
 ### Methods
 
@@ -55,13 +56,22 @@ ___
 
 Defined in log.ts:24
 
+___
+
+### `Static` listeners
+
+▪ **listeners**: *string[]* = 
+    ["all", "log", "logEvent", "logLevel"]
+
+Defined in log.ts:27
+
 ## Methods
 
 ### `Static` all
 
 ▸ **all**(`id`: `EventId`, ...`value`: any[]): *void*
 
-Defined in log.ts:27
+Defined in log.ts:30
 
 **Parameters:**
 
@@ -78,7 +88,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:98
+Defined in log.ts:101
 
 **Parameters:**
 
@@ -94,7 +104,7 @@ ___
 
 ▸ **log**(`id`: `EventId`, `level?`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:44
+Defined in log.ts:47
 
 **Parameters:**
 
@@ -112,7 +122,7 @@ ___
 
 ▸ **logEvent**(`id`: `EventId`, `level`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:63
+Defined in log.ts:66
 
 **Parameters:**
 
@@ -130,7 +140,7 @@ ___
 
 ▸ **logLevel**(`id`: `EventId`, `level`: string): *void*
 
-Defined in log.ts:86
+Defined in log.ts:89
 
 **Parameters:**
 
@@ -147,7 +157,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:102
+Defined in log.ts:105
 
 **Parameters:**
 
