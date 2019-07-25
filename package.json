@@ -1,0 +1,65 @@
+{
+  "name": "@listener-js/log",
+  "version": "0.0.1",
+  "description": "Listener logger",
+  "keywords": [
+    "event",
+    "listener"
+  ],
+  "author": "Listener <emit@listener.events>",
+  "main": "dist/log.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/listener-js/log.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/listener-js/log#readme",
+  "scripts": {
+    "fix": "npm run lint -- --fix",
+    "lint": "eslint --ignore-path .gitignore --ext=js .",
+    "pretty": "prettier --write **/*.css **/*.json **/*.md",
+    "test": "jest",
+    "build": "tsc",
+    "docs": "typedoc --out docs --media media --theme markdown src/*.ts"
+  },
+  "devDependencies": {
+    "@types/jest": "24.0.15",
+    "@types/node": "12.6.8",
+    "@typescript-eslint/eslint-plugin": "1.13.0",
+    "@typescript-eslint/parser": "1.13.0",
+    "eslint": "<6",
+    "eslint-config-prettier": "6.0.0",
+    "eslint-plugin-prettier": "3.1.0",
+    "husky": "3.0.1",
+    "jest": "24.8.0",
+    "lint-staged": "9.2.0",
+    "prettier": "1.18.2",
+    "ts-jest": "24.0.2",
+    "typedoc": "0.14.2",
+    "typedoc-plugin-markdown": "2.0.11",
+    "typescript": "3.5.3"
+  },
+  "prettier": {
+    "printWidth": 60,
+    "semi": false,
+    "trailingComma": "es5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm test && npm run docs && git add docs"
+    }
+  },
+  "lint-staged": {
+    "*.{css,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,jsx,ts}": [
+      "eslint --ignore-path .gitignore --fix",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@listener-js/listener": "0.1.0"
+  }
+}
