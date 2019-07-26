@@ -103,19 +103,16 @@ ___
 
 ### `Static` listen
 
-▸ **listen**(`__namedParameters`: object, `options`: `Record<string, any>`): *void*
+▸ **listen**(`listener`: `Listener`, `options`: `Record<string, any>`): *void*
 
 Defined in log.ts:47
 
 **Parameters:**
 
-▪ **__namedParameters**: *object*
-
 Name | Type |
 ------ | ------ |
-`listen` | `listen` |
-
-▪ **options**: *`Record<string, any>`*
+`listener` | `Listener` |
+`options` | `Record<string, any>` |
 
 **Returns:** *void*
 

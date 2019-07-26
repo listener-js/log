@@ -45,10 +45,10 @@ export class Log {
   }
 
   public static listen(
-    { listen }: Listener, options: Record<string, any>
+    listener: Listener, options: Record<string, any>
   ): void {
     if (options.logAll) {
-      listen("*", "Log.all")
+      listener.listen("*", "Log.all")
     }
   }
 
