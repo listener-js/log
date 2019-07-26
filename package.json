@@ -1,6 +1,6 @@
 {
   "name": "@listener-js/log",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Listener logger",
   "keywords": [
     "event",
