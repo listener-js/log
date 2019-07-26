@@ -70,7 +70,7 @@ Defined in log.ts:27
 
 ### `Static` all
 
-▸ **all**(`id`: `EventId`, ...`value`: any[]): *void*
+▸ **all**(`id`: string[], ...`value`: any[]): *void*
 
 Defined in log.ts:30
 
@@ -78,7 +78,7 @@ Defined in log.ts:30
 
 Name | Type |
 ------ | ------ |
-`id` | `EventId` |
+`id` | string[] |
 `...value` | any[] |
 
 **Returns:** *void*
@@ -89,7 +89,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:109
+Defined in log.ts:106
 
 **Parameters:**
 
@@ -105,7 +105,7 @@ ___
 
 ▸ **listen**(`listener`: `Listener`, `options`: `Record<string, any>`): *void*
 
-Defined in log.ts:47
+Defined in log.ts:46
 
 **Parameters:**
 
@@ -120,15 +120,15 @@ ___
 
 ### `Static` log
 
-▸ **log**(`id`: `EventId`, `level?`: string, ...`value`: any[]): *void*
+▸ **log**(`id`: string[], `level?`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:55
+Defined in log.ts:54
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | `EventId` |
+`id` | string[] |
 `level?` | string |
 `...value` | any[] |
 
@@ -138,15 +138,15 @@ ___
 
 ### `Static` logEvent
 
-▸ **logEvent**(`id`: `EventId`, `level`: string, ...`value`: any[]): *void*
+▸ **logEvent**(`id`: string[], `level`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:74
+Defined in log.ts:71
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | `EventId` |
+`id` | string[] |
 `level` | string |
 `...value` | any[] |
 
@@ -156,15 +156,15 @@ ___
 
 ### `Static` logLevel
 
-▸ **logLevel**(`id`: `EventId`, `level`: string): *void*
+▸ **logLevel**(`id`: string[], `level`: string): *void*
 
-Defined in log.ts:97
+Defined in log.ts:92
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | `EventId` |
+`id` | string[] |
 `level` | string |
 
 **Returns:** *void*
@@ -175,7 +175,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:113
+Defined in log.ts:110
 
 **Parameters:**
 

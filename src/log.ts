@@ -1,4 +1,4 @@
-import { EventId, Listener } from "@listener-js/listener"
+import { Listener } from "@listener-js/listener"
 
 export class Log {
   public static defaultLevel: string = "info"
@@ -28,8 +28,7 @@ export class Log {
     ["all", "log", "logEvent", "logLevel"]
 
   public static all(
-    id: EventId,
-    ...value: any[]
+    id: string[], ...value: any[]
   ): void {
     if (
       id.indexOf("Log.log") > -1 ||
@@ -48,14 +47,12 @@ export class Log {
     listener: Listener, options: Record<string, any>
   ): void {
     if (options.logAll) {
-      listener.listen("*", "Log.all")
+      listener.listen(["*"], ["Log.all"])
     }
   }
 
   public static log(
-    id: EventId,
-    level?: string,
-    ...value: any[]
+    id: string[], level?: string, ...value: any[]
   ): void {
     if (id.indexOf("Log.logEvent") > -1) {
       return
@@ -72,11 +69,9 @@ export class Log {
   }
 
   public static logEvent(
-    id: EventId,
-    level: string,
-    ...value: any[]
+    id: string[], level: string, ...value: any[]
   ): void {
-    const slicedId = id.slice(0, -2) as string[]
+    const slicedId = id.slice(0, -2)
     level = this.isLevel(level) ? level : "info"
 
     if (
@@ -94,9 +89,11 @@ export class Log {
     )
   }
 
-  public static logLevel(id: EventId, level: string): void {
+  public static logLevel(
+    id: string[], level: string
+  ): void {
     if (this.isLevel(level)) {
-      const root = id[id.length - 2] as string
+      const root = id[id.length - 2]
 
       if (root) {
         Log.eventLevels[root] = level
