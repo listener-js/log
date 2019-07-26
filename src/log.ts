@@ -71,7 +71,7 @@ export class Log {
   public static logEvent(
     id: string[], level: string, ...value: any[]
   ): void {
-    const slicedId = id.slice(0, -2)
+    const slicedId = id.slice(0, -1)
     level = this.isLevel(level) ? level : "info"
 
     if (
@@ -84,8 +84,7 @@ export class Log {
     // eslint-disable-next-line no-console
     console.log(
       Log.levelEmojis[level] + Log.levelSpaces[level],
-      `${id[id.length - 2]}(${slicedId.join(", ")})`,
-      ...this.summarize(value)
+      slicedId.join("\x1b[90m ⇨ \x1b[0m") + `(${this.summarize(value).join(", ")})`,
     )
   }
 

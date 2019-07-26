@@ -89,7 +89,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:106
+Defined in log.ts:105
 
 **Parameters:**
 
@@ -158,7 +158,7 @@ ___
 
 ▸ **logLevel**(`id`: string[], `level`: string): *void*
 
-Defined in log.ts:92
+Defined in log.ts:91
 
 **Parameters:**
 
@@ -175,7 +175,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:110
+Defined in log.ts:109
 
 **Parameters:**
 
