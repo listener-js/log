@@ -89,7 +89,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:103
+Defined in log.ts:113
 
 **Parameters:**
 
@@ -156,7 +156,7 @@ ___
 
 ### `Static` logLevel
 
-▸ **logLevel**(`id`: string[], `root`: string, `level`: string): *void*
+▸ **logLevel**(`id`: string[], `level`: string): *void*
 
 Defined in log.ts:91
 
@@ -165,7 +165,20 @@ Defined in log.ts:91
 Name | Type |
 ------ | ------ |
 `id` | string[] |
-`root` | string |
+`level` | string |
+
+**Returns:** *void*
+
+▸ **logLevel**(`id`: string[], `fnId`: string, `level`: string): *void*
+
+Defined in log.ts:93
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`id` | string[] |
+`fnId` | string |
 `level` | string |
 
 **Returns:** *void*
@@ -176,7 +189,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:107
+Defined in log.ts:117
 
 **Parameters:**
 

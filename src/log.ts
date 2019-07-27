@@ -37,8 +37,8 @@ export class Log {
       return
     }
 
-    const root = id[id.length - 2] as string
-    const level = Log.eventLevels[root] || "debug"
+    const fnId = id[id.length - 2] as string
+    const level = Log.eventLevels[fnId] || "debug"
 
     this.logEvent(id.slice(0, -1), level, ...value)
   }
@@ -88,12 +88,22 @@ export class Log {
     )
   }
 
+  public static logLevel(id: string[], level: string): void
+
   public static logLevel(
-    id: string[], root: string, level: string
+    id: string[], fnId: string, level: string
+  ): void
+  
+  public static logLevel(
+    id: string[], fnId: string, level?: string
   ): void {
+    if (!level) {
+      level = fnId
+      fnId = undefined
+    }
     if (this.isLevel(level)) {
-      if (root) {
-        Log.eventLevels[root] = level
+      if (fnId) {
+        Log.eventLevels[fnId] = level
       } else {
         Log.defaultLevel = level
       }
