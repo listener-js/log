@@ -12,7 +12,7 @@ class Test {
 listener({ Log, Test }, { logAll: true })
 
 test("log", (): void => {
-  Log.logLevel([], "trace")
+  Log.logLevel([], null, "trace")
   Log.log([], "debug")
   Log.log(["p1"], "error")
   Log.log(["p1", "p2"], "info", "hi")
@@ -23,11 +23,11 @@ test("log", (): void => {
 })
 
 test("log any event at log level debug", (): void => {
-  Log.logLevel([], "debug")
+  Log.logLevel([], null, "debug")
   Test.hi(["test", "id"])
 })
 
 test("set log level for specific event names", (): void => {
-  Log.logLevel(["Test.hi"], "info")
+  Log.logLevel([], "Test.hi", "info")
   Test.hi(["test", "id"])
 })

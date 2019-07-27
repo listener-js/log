@@ -47,7 +47,7 @@ export class Log {
     listener: Listener, options: Record<string, any>
   ): void {
     if (options.logAll) {
-      listener.listen(["*"], ["Log.all"])
+      listener.listen(["**"], ["Log.all"])
     }
   }
 
@@ -89,11 +89,9 @@ export class Log {
   }
 
   public static logLevel(
-    id: string[], level: string
+    id: string[], root: string, level: string
   ): void {
     if (this.isLevel(level)) {
-      const root = id[id.length - 2]
-
       if (root) {
         Log.eventLevels[root] = level
       } else {
@@ -110,7 +108,9 @@ export class Log {
     return arr.map((v: any): any => {
       const type = typeof v
 
-      if (type === "object" && v !== null) {
+      if (v === null) {
+        return "null"
+      } else if (type === "object") {
         const types = Object.keys(v).map(
           (k: string): string => `${k}: [${typeof v[k]}]`
         )
