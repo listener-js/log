@@ -19,7 +19,7 @@ test("log", (): void => {
   Log.log([], "warn", "hi")
   Log.log([], "anything")
   Log.log([])
-  Log.log([], "debug", { array: [], object: {}, string: "string" })
+  Log.log([], "trace", { array: [], object: {}, string: "string" })
 })
 
 test("log any event at log level debug", (): void => {
