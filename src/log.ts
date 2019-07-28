@@ -37,10 +37,10 @@ export class Log {
       return
     }
 
-    const fnId = id[id.length - 2] as string
+    const fnId = id[1] as string
     const level = Log.eventLevels[fnId] || "debug"
 
-    this.logEvent(id.slice(0, -1), level, ...value)
+    this.logEvent(id.slice(1), level, ...value)
   }
 
   public static listen(
@@ -71,7 +71,7 @@ export class Log {
   public static logEvent(
     id: string[], level: string, ...value: any[]
   ): void {
-    const slicedId = id.slice(0, -1)
+    const slicedId = id.slice(1)
     level = this.isLevel(level) ? level : "info"
 
     if (
@@ -81,10 +81,12 @@ export class Log {
       return
     }
 
+    slicedId[0] += `(${this.summarize(value).join(", ")})`
+
     // eslint-disable-next-line no-console
     console.log(
       Log.levelEmojis[level] + Log.levelSpaces[level],
-      slicedId.join("\x1b[90m ⇨ \x1b[0m") + `(${this.summarize(value).join(", ")})`,
+      slicedId.join("\x1b[90m ⇦ \x1b[0m"),
     )
   }
 
