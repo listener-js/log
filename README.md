@@ -1,5 +1,7 @@
 # @listener-js/log
 
+Listener logger
+
 ![log](media/log.gif)
 
 ## Install
