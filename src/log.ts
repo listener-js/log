@@ -47,7 +47,7 @@ export class Log {
     listener: Listener, options: Record<string, any>
   ): void {
     if (options.logAll) {
-      listener.listen(["**"], ["Log.all"])
+      listener.listen(["**"], ["Log.all"], { prepend: 1000 })
     }
   }
 
