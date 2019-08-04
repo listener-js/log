@@ -72,6 +72,7 @@ export class Log {
     id: string[], level: string, ...value: any[]
   ): void {
     const slicedId = id.slice(1)
+    const fnId = slicedId[0]
     level = this.isLevel(level) ? level : "info"
 
     if (
@@ -88,6 +89,11 @@ export class Log {
       Log.levelEmojis[level] + Log.levelSpaces[level],
       slicedId.join("\x1b[90m ⇦ \x1b[0m"),
     )
+
+    if (fnId === "Log.log" && value.length)  {
+      // eslint-disable-next-line no-console
+      console.log(...value)
+    }
   }
 
   public static logLevel(id: string[], level: string): void
