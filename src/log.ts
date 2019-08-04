@@ -3,6 +3,8 @@ import { Listener } from "@listener-js/listener"
 export class Log {
   public static defaultLevel: string = "info"
 
+  public static strategy: string = "default"
+
   public static eventLevels: Record<string, string> = {}
 
   public static levelEmojis: Record<string, string> = {
@@ -26,6 +28,9 @@ export class Log {
   
   public static listeners: string[] =
     ["all", "log", "logEvent", "logLevel"]
+  
+  public static strategies: string[] =
+    ["args", "default", "summary"]
 
   public static all(
     id: string[], ...value: any[]
@@ -41,6 +46,34 @@ export class Log {
     const level = Log.eventLevels[fnId] || "debug"
 
     this.logEvent(id.slice(1), level, ...value)
+  }
+
+  public static getLevel(level: string): string {
+    if (!level) {
+      return Log.defaultLevel
+    }
+
+    const levels = level.split(":")
+    
+    for (const level of levels) {
+      if (Log.levels.indexOf(level) > -1) {
+        return level
+      }
+    }
+  }
+
+  public static getStrategy(strategy: string): string {
+    if (!strategy) {
+      return Log.strategy
+    }
+
+    const strategies = strategy.split(":")
+    
+    for (const strategy of strategies) {
+      if (Log.strategies.indexOf(strategy) > -1) {
+        return strategy
+      }
+    }
   }
 
   public static listen(
@@ -73,6 +106,7 @@ export class Log {
   ): void {
     const slicedId = id.slice(1)
     const fnId = slicedId[0]
+
     level = this.isLevel(level) ? level : "info"
 
     if (
@@ -82,7 +116,16 @@ export class Log {
       return
     }
 
-    slicedId[0] += `(${this.summarize(value).join(", ")})`
+    if (Log.strategy === "summary") {
+      slicedId[0] += `(${this.summarize(value).join(", ")})`
+    }
+
+    if (Log.strategy === "args") {
+      const json = value.map(
+        (v: any): string => JSON.stringify(v)
+      )
+      slicedId[0] += `(${json.join(", ")})`
+    }
 
     // eslint-disable-next-line no-console
     console.log(
@@ -122,6 +165,10 @@ export class Log {
     return Log.levels.indexOf(level) > -1
   }
 
+  public static isStrategy(strategy: string): boolean {
+    return Log.strategies.indexOf(strategy) > -1
+  }
+
   public static summarize(arr: any[]): string[] {
     return arr.map((v: any): any => {
       const type = typeof v
@@ -130,25 +177,25 @@ export class Log {
         return "null"
       } else if (Array.isArray(v)) {
         const types = Object.keys(v).map(
-          (k: string): string => `[${typeof v[k]}]`
+          (k: string): string => `<${typeof v[k]}>`
         )
         return `[ ${types.join(", ")} ]`
       } else if (type === "object") {
         const types = Object.keys(v).map(
-          (k: string): string => `${k}: [${typeof v[k]}]`
+          (k: string): string => `${k}: <${typeof v[k]}>`
         )
         return `{ ${types.join(", ")} }`
       } else if (type === "string") {
         if (v.length > 20) {
-          return "[string]"
+          return "<string>"
         }
         return v
       } else {
-        return type
+        return `<${type}>`
       }
     })
   }
 }
 
-Log.defaultLevel = Log.isLevel(process.env.LOG) ?
-  process.env.LOG : "info"
+Log.defaultLevel = Log.getLevel(process.env.LOG)
+Log.strategy = Log.getStrategy(process.env.LOG)

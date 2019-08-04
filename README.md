@@ -46,3 +46,15 @@ You can also set log levels for specific listener functions:
 ```js
 emit.logLevel([], "MyClass.myFn", "info")
 ```
+
+## Log strategies
+
+There are three log strategies: `default`, `args`, and `summary`.
+
+Set the strategy via the `LOG` environment variable.
+
+To set the strategy and level, separate them with a colon (`:`):
+
+```bash
+LOG=trace:args npm test
+```
