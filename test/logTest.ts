@@ -20,6 +20,8 @@ test("log", (): void => {
   Log.log([], "anything")
   Log.log([])
   Log.log([], "trace", { array: [], object: {}, string: "string" })
+  Log.log([], "debug", [ "a", 1, true ])
+  Log.log([], "error", "this is a string that is longer than 20")
 })
 
 test("log any event at log level debug", (): void => {

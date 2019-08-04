@@ -128,12 +128,20 @@ export class Log {
 
       if (v === null) {
         return "null"
+      } else if (Array.isArray(v)) {
+        const types = Object.keys(v).map(
+          (k: string): string => `[${typeof v[k]}]`
+        )
+        return `[ ${types.join(", ")} ]`
       } else if (type === "object") {
         const types = Object.keys(v).map(
           (k: string): string => `${k}: [${typeof v[k]}]`
         )
         return `{ ${types.join(", ")} }`
       } else if (type === "string") {
+        if (v.length > 20) {
+          return "[string]"
+        }
         return v
       } else {
         return type
