@@ -60,9 +60,8 @@ export class Log {
     const filters = filter.split(":")
 
     for (const filter of filters) {
-      const match = filter.match(/^filter\(([^)]+)\)$/)
-      if (match) {
-        return match[1]
+      if (filter.match(/\./)) {
+        return filter
       }
     }
   }

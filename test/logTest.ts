@@ -36,7 +36,7 @@ test("set log level for specific event names", (): void => {
 })
 
 test("set log filter", (): void => {
-  Log.filter = Log.getFilter("debug:ids:filter(Test.hi)")
+  Log.filter = Log.getFilter("debug:ids:Test.hi")
   expect(Log.filter).toBe("Test.hi")
   Test.hi(["should", "see", "this"])
   Log.log([], "debug", "SHOULDN'T SEE THIS")
