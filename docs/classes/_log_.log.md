@@ -45,7 +45,7 @@
 
 ▪ **defaultLevel**: *string* = "info"
 
-Defined in log.ts:4
+*Defined in [log.ts:4](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L4)*
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 ▪ **eventLevels**: *`Record<string, string>`*
 
-Defined in log.ts:10
+*Defined in [log.ts:10](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L10)*
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 ▪ **filter**? : *string*
 
-Defined in log.ts:6
+*Defined in [log.ts:6](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L6)*
 
 ___
 
@@ -70,7 +70,7 @@ ___
 ▪ **levels**: *string[]* = 
     ["listener", "trace", "debug", "info", "warn", "error"]
 
-Defined in log.ts:30
+*Defined in [log.ts:30](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L30)*
 
 ___
 
@@ -79,7 +79,7 @@ ___
 ▪ **listeners**: *string[]* = 
     ["all", "log", "logEvent", "logLevel"]
 
-Defined in log.ts:33
+*Defined in [log.ts:33](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L33)*
 
 ___
 
@@ -88,7 +88,7 @@ ___
 ▪ **strategies**: *string[]* = 
     ["args", "argsJson", "ids"]
 
-Defined in log.ts:36
+*Defined in [log.ts:36](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L36)*
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 ▪ **strategy**: *string* = "ids"
 
-Defined in log.ts:8
+*Defined in [log.ts:8](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L8)*
 
 ## Methods
 
@@ -104,7 +104,7 @@ Defined in log.ts:8
 
 ▸ **all**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:39
+*Defined in [log.ts:39](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L39)*
 
 **Parameters:**
 
@@ -121,7 +121,7 @@ ___
 
 ▸ **getFilter**(`filter`: string): *string*
 
-Defined in log.ts:55
+*Defined in [log.ts:55](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L55)*
 
 **Parameters:**
 
@@ -137,7 +137,7 @@ ___
 
 ▸ **getLevel**(`level`: string): *string*
 
-Defined in log.ts:70
+*Defined in [log.ts:70](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L70)*
 
 **Parameters:**
 
@@ -153,7 +153,7 @@ ___
 
 ▸ **getStrategy**(`strategy`: string): *string*
 
-Defined in log.ts:84
+*Defined in [log.ts:84](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L84)*
 
 **Parameters:**
 
@@ -169,7 +169,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:187
+*Defined in [log.ts:187](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L187)*
 
 **Parameters:**
 
@@ -185,7 +185,7 @@ ___
 
 ▸ **isStrategy**(`strategy`: string): *boolean*
 
-Defined in log.ts:191
+*Defined in [log.ts:191](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L191)*
 
 **Parameters:**
 
@@ -201,7 +201,7 @@ ___
 
 ▸ **listen**(`listener`: `Listener`, `options`: `Record<string, any>`): *void*
 
-Defined in log.ts:98
+*Defined in [log.ts:98](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L98)*
 
 **Parameters:**
 
@@ -218,7 +218,7 @@ ___
 
 ▸ **log**(`id`: string[], `level?`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:106
+*Defined in [log.ts:106](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L106)*
 
 **Parameters:**
 
@@ -236,7 +236,7 @@ ___
 
 ▸ **logEvent**(`id`: string[], `level`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:123
+*Defined in [log.ts:123](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L123)*
 
 **Parameters:**
 
@@ -254,7 +254,7 @@ ___
 
 ▸ **logLevel**(`id`: string[], `level`: string): *void*
 
-Defined in log.ts:165
+*Defined in [log.ts:165](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L165)*
 
 **Parameters:**
 
@@ -267,7 +267,7 @@ Name | Type |
 
 ▸ **logLevel**(`id`: string[], `fnId`: string, `level`: string): *void*
 
-Defined in log.ts:167
+*Defined in [log.ts:167](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L167)*
 
 **Parameters:**
 
@@ -285,7 +285,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:195
+*Defined in [log.ts:195](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L195)*
 
 **Parameters:**
 
@@ -301,43 +301,43 @@ Name | Type |
 
 ### ▪ **levelEmojis**: *object*
 
-Defined in log.ts:12
+*Defined in [log.ts:12](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L12)*
 
 ###  debug
 
 • **debug**: *string* = "🐛"
 
-Defined in log.ts:13
+*Defined in [log.ts:13](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L13)*
 
 ###  error
 
 • **error**: *string* = "🛑"
 
-Defined in log.ts:14
+*Defined in [log.ts:14](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L14)*
 
 ###  info
 
 • **info**: *string* = "ℹ️"
 
-Defined in log.ts:15
+*Defined in [log.ts:15](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L15)*
 
 ###  listener
 
 • **listener**: *string* = "👂🏻"
 
-Defined in log.ts:16
+*Defined in [log.ts:16](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L16)*
 
 ###  trace
 
 • **trace**: *string* = "💻"
 
-Defined in log.ts:17
+*Defined in [log.ts:17](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L17)*
 
 ###  warn
 
 • **warn**: *string* = "⚠️"
 
-Defined in log.ts:18
+*Defined in [log.ts:18](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L18)*
 
 ___
 
@@ -345,40 +345,40 @@ ___
 
 ### ▪ **levelSpaces**: *object*
 
-Defined in log.ts:21
+*Defined in [log.ts:21](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L21)*
 
 ###  debug
 
 • **debug**: *string* = ""
 
-Defined in log.ts:22
+*Defined in [log.ts:22](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L22)*
 
 ###  error
 
 • **error**: *string* = ""
 
-Defined in log.ts:23
+*Defined in [log.ts:23](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L23)*
 
 ###  info
 
 • **info**: *string* = " "
 
-Defined in log.ts:24
+*Defined in [log.ts:24](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L24)*
 
 ###  listener
 
 • **listener**: *string* = ""
 
-Defined in log.ts:25
+*Defined in [log.ts:25](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L25)*
 
 ###  trace
 
 • **trace**: *string* = ""
 
-Defined in log.ts:26
+*Defined in [log.ts:26](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L26)*
 
 ###  warn
 
 • **warn**: *string* = " "
 
-Defined in log.ts:27
+*Defined in [log.ts:27](https://github.com/listener-js/log/blob/531b53e/src/log.ts#L27)*
