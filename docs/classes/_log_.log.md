@@ -14,6 +14,7 @@
 
 * [defaultLevel](_log_.log.md#static-defaultlevel)
 * [eventLevels](_log_.log.md#static-eventlevels)
+* [filter](_log_.log.md#static-optional-filter)
 * [levels](_log_.log.md#static-levels)
 * [listeners](_log_.log.md#static-listeners)
 * [strategies](_log_.log.md#static-strategies)
@@ -22,6 +23,7 @@
 ### Methods
 
 * [all](_log_.log.md#static-all)
+* [getFilter](_log_.log.md#static-getfilter)
 * [getLevel](_log_.log.md#static-getlevel)
 * [getStrategy](_log_.log.md#static-getstrategy)
 * [isLevel](_log_.log.md#static-islevel)
@@ -43,7 +45,7 @@
 
 ▪ **defaultLevel**: *string* = "info"
 
-Defined in log.ts:4
+*Defined in [log.ts:4](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L4)*
 
 ___
 
@@ -51,16 +53,24 @@ ___
 
 ▪ **eventLevels**: *`Record<string, string>`*
 
-Defined in log.ts:8
+*Defined in [log.ts:10](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L10)*
+
+___
+
+### `Static` `Optional` filter
+
+▪ **filter**? : *string*
+
+*Defined in [log.ts:6](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L6)*
 
 ___
 
 ### `Static` levels
 
 ▪ **levels**: *string[]* = 
-    ["trace", "debug", "info", "warn", "error"]
+    ["listener", "trace", "debug", "info", "warn", "error"]
 
-Defined in log.ts:26
+*Defined in [log.ts:30](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L30)*
 
 ___
 
@@ -69,24 +79,24 @@ ___
 ▪ **listeners**: *string[]* = 
     ["all", "log", "logEvent", "logLevel"]
 
-Defined in log.ts:29
+*Defined in [log.ts:33](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L33)*
 
 ___
 
 ### `Static` strategies
 
 ▪ **strategies**: *string[]* = 
-    ["args", "default", "summary"]
+    ["args", "argsJson", "ids"]
 
-Defined in log.ts:32
+*Defined in [log.ts:36](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L36)*
 
 ___
 
 ### `Static` strategy
 
-▪ **strategy**: *string* = "default"
+▪ **strategy**: *string* = "ids"
 
-Defined in log.ts:6
+*Defined in [log.ts:8](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L8)*
 
 ## Methods
 
@@ -94,7 +104,7 @@ Defined in log.ts:6
 
 ▸ **all**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:35
+*Defined in [log.ts:39](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L39)*
 
 **Parameters:**
 
@@ -107,11 +117,27 @@ Name | Type |
 
 ___
 
+### `Static` getFilter
+
+▸ **getFilter**(`filter`: string): *string*
+
+*Defined in [log.ts:55](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L55)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`filter` | string |
+
+**Returns:** *string*
+
+___
+
 ### `Static` getLevel
 
 ▸ **getLevel**(`level`: string): *string*
 
-Defined in log.ts:51
+*Defined in [log.ts:70](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L70)*
 
 **Parameters:**
 
@@ -127,7 +153,7 @@ ___
 
 ▸ **getStrategy**(`strategy`: string): *string*
 
-Defined in log.ts:65
+*Defined in [log.ts:84](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L84)*
 
 **Parameters:**
 
@@ -143,7 +169,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:164
+*Defined in [log.ts:187](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L187)*
 
 **Parameters:**
 
@@ -159,7 +185,7 @@ ___
 
 ▸ **isStrategy**(`strategy`: string): *boolean*
 
-Defined in log.ts:168
+*Defined in [log.ts:191](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L191)*
 
 **Parameters:**
 
@@ -175,7 +201,7 @@ ___
 
 ▸ **listen**(`listener`: `Listener`, `options`: `Record<string, any>`): *void*
 
-Defined in log.ts:79
+*Defined in [log.ts:98](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L98)*
 
 **Parameters:**
 
@@ -192,7 +218,7 @@ ___
 
 ▸ **log**(`id`: string[], `level?`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:87
+*Defined in [log.ts:106](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L106)*
 
 **Parameters:**
 
@@ -210,7 +236,7 @@ ___
 
 ▸ **logEvent**(`id`: string[], `level`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:104
+*Defined in [log.ts:123](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L123)*
 
 **Parameters:**
 
@@ -228,7 +254,7 @@ ___
 
 ▸ **logLevel**(`id`: string[], `level`: string): *void*
 
-Defined in log.ts:142
+*Defined in [log.ts:165](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L165)*
 
 **Parameters:**
 
@@ -241,7 +267,7 @@ Name | Type |
 
 ▸ **logLevel**(`id`: string[], `fnId`: string, `level`: string): *void*
 
-Defined in log.ts:144
+*Defined in [log.ts:167](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L167)*
 
 **Parameters:**
 
@@ -259,7 +285,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:172
+*Defined in [log.ts:195](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L195)*
 
 **Parameters:**
 
@@ -275,37 +301,43 @@ Name | Type |
 
 ### ▪ **levelEmojis**: *object*
 
-Defined in log.ts:10
+*Defined in [log.ts:12](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L12)*
 
 ###  debug
 
 • **debug**: *string* = "🐛"
 
-Defined in log.ts:11
+*Defined in [log.ts:13](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L13)*
 
 ###  error
 
 • **error**: *string* = "🛑"
 
-Defined in log.ts:12
+*Defined in [log.ts:14](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L14)*
 
 ###  info
 
 • **info**: *string* = "ℹ️"
 
-Defined in log.ts:13
+*Defined in [log.ts:15](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L15)*
+
+###  listener
+
+• **listener**: *string* = "👂🏻"
+
+*Defined in [log.ts:16](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L16)*
 
 ###  trace
 
 • **trace**: *string* = "💻"
 
-Defined in log.ts:14
+*Defined in [log.ts:17](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L17)*
 
 ###  warn
 
 • **warn**: *string* = "⚠️"
 
-Defined in log.ts:15
+*Defined in [log.ts:18](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L18)*
 
 ___
 
@@ -313,34 +345,40 @@ ___
 
 ### ▪ **levelSpaces**: *object*
 
-Defined in log.ts:18
+*Defined in [log.ts:21](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L21)*
 
 ###  debug
 
 • **debug**: *string* = ""
 
-Defined in log.ts:19
+*Defined in [log.ts:22](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L22)*
 
 ###  error
 
 • **error**: *string* = ""
 
-Defined in log.ts:20
+*Defined in [log.ts:23](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L23)*
 
 ###  info
 
 • **info**: *string* = " "
 
-Defined in log.ts:21
+*Defined in [log.ts:24](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L24)*
+
+###  listener
+
+• **listener**: *string* = ""
+
+*Defined in [log.ts:25](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L25)*
 
 ###  trace
 
 • **trace**: *string* = ""
 
-Defined in log.ts:22
+*Defined in [log.ts:26](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L26)*
 
 ###  warn
 
 • **warn**: *string* = " "
 
-Defined in log.ts:23
+*Defined in [log.ts:27](https://github.com/listener-js/log/blob/af524f8/src/log.ts#L27)*

@@ -12,8 +12,9 @@ class Test {
 listener({ Log, Test }, { logAll: true })
 
 test("log", (): void => {
-  Log.logLevel([], "trace")
+  Log.logLevel([], "listener")
   Log.log([], "debug")
+  Log.log([], "listener")
   Log.log(["p1"], "error")
   Log.log(["p1", "p2"], "info", "hi")
   Log.log([], "warn", "hi")
@@ -32,4 +33,11 @@ test("log any event at log level debug", (): void => {
 test("set log level for specific event names", (): void => {
   Log.logLevel([], "Test.hi", "info")
   Test.hi(["test", "id"])
+})
+
+test("set log filter", (): void => {
+  Log.filter = Log.getFilter("debug:ids:filter(Test.hi)")
+  expect(Log.filter).toBe("Test.hi")
+  Test.hi(["should", "see", "this"])
+  Log.log([], "debug", "SHOULDN'T SEE THIS")
 })

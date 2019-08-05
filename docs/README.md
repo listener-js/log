@@ -53,7 +53,7 @@ emit.logLevel([], "MyClass.myFn", "info")
 
 ## Log strategies
 
-There are three log strategies: `default`, `args`, and `summary`.
+There are three log strategies: `args`, `argsJson`, and `ids` (default).
 
 Set the strategy via the `LOG` environment variable.
 

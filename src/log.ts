@@ -3,7 +3,9 @@ import { Listener } from "@listener-js/listener"
 export class Log {
   public static defaultLevel: string = "info"
 
-  public static strategy: string = "default"
+  public static filter?: string
+
+  public static strategy: string = "ids"
 
   public static eventLevels: Record<string, string> = {}
 
@@ -11,6 +13,7 @@ export class Log {
     debug: "🐛",
     error: "🛑",
     info: "ℹ️",
+    listener: "👂🏻",
     trace: "💻",
     warn: "⚠️",
   }
@@ -19,18 +22,19 @@ export class Log {
     debug: "",
     error: "",
     info: " ",
+    listener: "",
     trace: "",
     warn: " ",
   }
 
   public static levels: string[] =
-    ["trace", "debug", "info", "warn", "error"]
+    ["listener", "trace", "debug", "info", "warn", "error"]
   
   public static listeners: string[] =
     ["all", "log", "logEvent", "logLevel"]
   
   public static strategies: string[] =
-    ["args", "default", "summary"]
+    ["args", "argsJson", "ids"]
 
   public static all(
     id: string[], ...value: any[]
@@ -46,6 +50,21 @@ export class Log {
     const level = Log.eventLevels[fnId] || "debug"
 
     this.logEvent(id.slice(1), level, ...value)
+  }
+
+  public static getFilter(filter: string): string {
+    if (!filter) {
+      return Log.filter
+    }
+
+    const filters = filter.split(":")
+
+    for (const filter of filters) {
+      const match = filter.match(/^filter\(([^)]+)\)$/)
+      if (match) {
+        return match[1]
+      }
+    }
   }
 
   public static getLevel(level: string): string {
@@ -107,6 +126,10 @@ export class Log {
     const slicedId = id.slice(1)
     const fnId = slicedId[0]
 
+    if (Log.filter && slicedId.indexOf(Log.filter) < 0) {
+      return
+    }
+
     level = this.isLevel(level) ? level : "info"
 
     if (
@@ -116,11 +139,11 @@ export class Log {
       return
     }
 
-    if (Log.strategy === "summary") {
+    if (Log.strategy === "args") {
       slicedId[0] += `(${this.summarize(value).join(", ")})`
     }
 
-    if (Log.strategy === "args") {
+    if (Log.strategy === "argsJson") {
       const json = value.map(
         (v: any): string => JSON.stringify(v)
       )
@@ -198,4 +221,5 @@ export class Log {
 }
 
 Log.defaultLevel = Log.getLevel(process.env.LOG)
+Log.filter = Log.getFilter(process.env.LOG)
 Log.strategy = Log.getStrategy(process.env.LOG)
