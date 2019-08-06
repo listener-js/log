@@ -78,6 +78,8 @@ export class Log {
         return level
       }
     }
+
+    return Log.defaultLevel
   }
 
   public static getStrategy(strategy: string): string {
@@ -92,6 +94,8 @@ export class Log {
         return strategy
       }
     }
+
+    return Log.strategy
   }
 
   public static listen(

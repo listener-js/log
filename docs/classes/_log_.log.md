@@ -153,7 +153,7 @@ ___
 
 ▸ **getStrategy**(`strategy`: string): *string*
 
-Defined in log.ts:83
+Defined in log.ts:85
 
 **Parameters:**
 
@@ -169,7 +169,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:196
+Defined in log.ts:200
 
 **Parameters:**
 
@@ -185,7 +185,7 @@ ___
 
 ▸ **isStrategy**(`strategy`: string): *boolean*
 
-Defined in log.ts:200
+Defined in log.ts:204
 
 **Parameters:**
 
@@ -201,7 +201,7 @@ ___
 
 ▸ **listen**(`listener`: `Listener`, `options`: `Record<string, any>`): *void*
 
-Defined in log.ts:97
+Defined in log.ts:101
 
 **Parameters:**
 
@@ -218,7 +218,7 @@ ___
 
 ▸ **log**(`id`: string[], `level?`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:105
+Defined in log.ts:109
 
 **Parameters:**
 
@@ -236,7 +236,7 @@ ___
 
 ▸ **logEvent**(`id`: string[], `level`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:122
+Defined in log.ts:126
 
 **Parameters:**
 
@@ -254,7 +254,7 @@ ___
 
 ▸ **logLevel**(`id`: string[], `level`: string): *void*
 
-Defined in log.ts:174
+Defined in log.ts:178
 
 **Parameters:**
 
@@ -267,7 +267,7 @@ Name | Type |
 
 ▸ **logLevel**(`id`: string[], `fnId`: string, `level`: string): *void*
 
-Defined in log.ts:176
+Defined in log.ts:180
 
 **Parameters:**
 
@@ -285,7 +285,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:204
+Defined in log.ts:208
 
 **Parameters:**
 
