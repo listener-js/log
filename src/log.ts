@@ -155,7 +155,13 @@ export class Log {
       slicedId.join("\x1b[90m ⇦ \x1b[0m"),
     )
 
-    if (fnId === "Log.log" && value.length)  {
+    if (
+      value.length &&
+      (
+        fnId === "Log.log" ||
+        Log.levels.indexOf(level) > Log.levels.indexOf("debug")
+      )
+    )  {
       // eslint-disable-next-line no-console
       console.log(...value)
     }
