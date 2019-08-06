@@ -169,7 +169,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:192
+Defined in log.ts:196
 
 **Parameters:**
 
@@ -185,7 +185,7 @@ ___
 
 ▸ **isStrategy**(`strategy`: string): *boolean*
 
-Defined in log.ts:196
+Defined in log.ts:200
 
 **Parameters:**
 
@@ -254,7 +254,7 @@ ___
 
 ▸ **logLevel**(`id`: string[], `level`: string): *void*
 
-Defined in log.ts:170
+Defined in log.ts:174
 
 **Parameters:**
 
@@ -267,7 +267,7 @@ Name | Type |
 
 ▸ **logLevel**(`id`: string[], `fnId`: string, `level`: string): *void*
 
-Defined in log.ts:172
+Defined in log.ts:176
 
 **Parameters:**
 
@@ -285,7 +285,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:200
+Defined in log.ts:204
 
 **Parameters:**
 

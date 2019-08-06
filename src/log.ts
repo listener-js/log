@@ -149,22 +149,26 @@ export class Log {
       slicedId[0] += `(${json.join(", ")})`
     }
 
+    let extra = []
+
+    if (
+      value.length === 1 &&
+      (
+        fnId === "Log.log" ||
+        Log.levels.indexOf(level) > Log.levels.indexOf("debug")
+      ) &&
+      typeof value[0] === "string"
+    ) {
+      // eslint-disable-next-line no-console
+      extra = [ `\n   ${value[0]}` ]
+    }
+
     // eslint-disable-next-line no-console
     console.log(
       Log.levelEmojis[level] + Log.levelSpaces[level],
       slicedId.join("\x1b[90m ⇦ \x1b[0m"),
+      ...extra
     )
-
-    if (
-      value.length &&
-      (
-        fnId === "Log.log" ||
-        Log.levels.indexOf(level) > Log.levels.indexOf("debug")
-      )
-    )  {
-      // eslint-disable-next-line no-console
-      console.log(...value)
-    }
   }
 
   public static logLevel(id: string[], level: string): void
