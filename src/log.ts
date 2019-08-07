@@ -220,10 +220,6 @@ export class Log {
     return this.levels.indexOf(level) > -1
   }
 
-  private isStrategy(strategy: string): boolean {
-    return this.strategies.indexOf(strategy) > -1
-  }
-
   private summarize(arr: any[]): string[] {
     return arr.map((v: any): any => {
       const type = typeof v

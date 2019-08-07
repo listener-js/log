@@ -35,7 +35,6 @@
 * [info](_log_.log.md#info)
 * [internal](_log_.log.md#internal)
 * [isLevel](_log_.log.md#private-islevel)
-* [isStrategy](_log_.log.md#private-isstrategy)
 * [listen](_log_.log.md#listen)
 * [log](_log_.log.md#log)
 * [logEvent](_log_.log.md#logevent)
@@ -268,22 +267,6 @@ Name | Type |
 
 ___
 
-### `Private` isStrategy
-
-▸ **isStrategy**(`strategy`: string): *boolean*
-
-Defined in log.ts:223
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`strategy` | string |
-
-**Returns:** *boolean*
-
-___
-
 ###  listen
 
 ▸ **listen**(`listener`: `Listener`, `options`: `Record<string, any>`): *void*
@@ -372,7 +355,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:227
+Defined in log.ts:223
 
 **Parameters:**
 
