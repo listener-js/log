@@ -9,7 +9,7 @@ class Test {
   }
 }
 
-listener({ Test, log }, { logAll: true })
+listener({ Test, log })
 
 test("log", (): void => {
   log.logLevel([], "internal")

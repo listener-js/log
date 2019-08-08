@@ -18,17 +18,17 @@ npm install @listener-js/listener @listener-js/log
 
 ```ts
 import { listener } from "@listener-js/listener"
-import { Log } from "@listener-js/log"
+import { log } from "@listener-js/log"
 
-listener({ Log }, { logAll: true })
+listener({ log })
 ```
-
-The `logAll` option automatically adds a global listener for logging all events.
 
 ## Call logger directly
 
 ```ts
-Log.log([], "warn", "warning!")
+log.log([], "warn", "warning!")
+// or
+log.warn([], "warning!")
 ```
 
 ## Log levels
@@ -44,7 +44,7 @@ LOG=listener npm test
 Or programmatically:
 
 ```js
-Log.logLevel([], "debug")
+log.logLevel([], "debug")
 ```
 
 ## Listener log level
@@ -52,7 +52,7 @@ Log.logLevel([], "debug")
 You can also set log levels for specific listener functions:
 
 ```js
-Log.logLevel([], "MyClass.myFn", "info")
+log.logLevel([], "MyClass.myFn", "info")
 ```
 
 ## Log strategies

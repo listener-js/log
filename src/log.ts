@@ -80,7 +80,7 @@ export class Log {
   ): void {
     this.instanceId = instanceId
 
-    if (options.logAll) {
+    if (options.logAll !== false) {
       listener.listen(
         ["**"],
         [`${instanceId}.all`],
