@@ -1,9 +1,10 @@
 import { Listener } from "@listener-js/listener"
 
 export class Log {
-  public defaultLevel: string = "info"
+  public defaultLevel = "info"
+  public instanceId = "log"
   public filter?: string
-  public strategy: string = "ids"
+  public strategy = "ids"
 
   public eventLevels: Record<string, string> = {}
   public levelEmojis: Record<string, string> = {
@@ -51,14 +52,15 @@ export class Log {
     id: string[], ...value: any[]
   ): void {
     if (
-      id.indexOf("log.log") > -1 ||
-      id.indexOf("log.logEvent") > -1
+      id.indexOf(`${this.instanceId}.log`) > -1 ||
+      id.indexOf(`${this.instanceId}.logEvent`) > -1
     ) {
       return
     }
 
     const fnId = id[1] as string
-    const match = fnId.match(/log\.(.+)/)
+    const regex = new RegExp(`${this.instanceId}\\.(.+)`)
+    const match = fnId.match(regex)
     
     let fnLevel
 
@@ -72,17 +74,25 @@ export class Log {
   }
 
   public listen(
-    listener: Listener, options: Record<string, any>
+    instanceId: string,
+    listener: Listener,
+    options: Record<string, any>
   ): void {
+    this.instanceId = instanceId
+
     if (options.logAll) {
-      listener.listen(["**"], ["log.all"], { prepend: 1000 })
+      listener.listen(
+        ["**"],
+        [`${instanceId}.all`],
+        { prepend: 1000 }
+      )
     }
   }
 
   public log(
     id: string[], level?: string, ...value: any[]
   ): void {
-    if (id.indexOf("log.logEvent") > -1) {
+    if (id.indexOf(`${this.instanceId}.logEvent`) > -1) {
       return
     }
 
@@ -131,7 +141,7 @@ export class Log {
     if (
       value.length === 1 &&
       (
-        fnId.match(/log\..+/) ||
+        fnId.match(new RegExp(`$${this.instanceId}\\.`)) ||
         this.levels.indexOf(level) > this.levels.indexOf("debug")
       ) &&
       typeof value[0] === "string"

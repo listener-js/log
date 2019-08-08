@@ -19,6 +19,7 @@
 * [defaultLevel](_log_.log.md#defaultlevel)
 * [eventLevels](_log_.log.md#eventlevels)
 * [filter](_log_.log.md#optional-filter)
+* [instanceId](_log_.log.md#instanceid)
 * [levels](_log_.log.md#levels)
 * [listeners](_log_.log.md#listeners)
 * [strategies](_log_.log.md#strategies)
@@ -54,7 +55,7 @@
 
 \+ **new Log**(): *[Log](_log_.log.md)*
 
-Defined in log.ts:33
+Defined in log.ts:34
 
 **Returns:** *[Log](_log_.log.md)*
 
@@ -72,13 +73,21 @@ ___
 
 • **eventLevels**: *`Record<string, string>`*
 
-Defined in log.ts:8
+Defined in log.ts:9
 
 ___
 
 ### `Optional` filter
 
 • **filter**? : *string*
+
+Defined in log.ts:6
+
+___
+
+###  instanceId
+
+• **instanceId**: *string* = "log"
 
 Defined in log.ts:5
 
@@ -89,7 +98,7 @@ ___
 • **levels**: *string[]* = 
     ["internal", "trace", "debug", "info", "warn", "error"]
 
-Defined in log.ts:27
+Defined in log.ts:28
 
 ___
 
@@ -98,7 +107,7 @@ ___
 • **listeners**: *string[]* = 
     ["all", "log", "logEvent", "logLevel", ...this.levels]
 
-Defined in log.ts:30
+Defined in log.ts:31
 
 ___
 
@@ -106,7 +115,7 @@ ___
 
 • **strategies**: *string[]* =  ["args", "argsJson", "ids"]
 
-Defined in log.ts:33
+Defined in log.ts:34
 
 ___
 
@@ -114,7 +123,7 @@ ___
 
 • **strategy**: *string* = "ids"
 
-Defined in log.ts:6
+Defined in log.ts:7
 
 ## Methods
 
@@ -122,7 +131,7 @@ Defined in log.ts:6
 
 ▸ **all**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:50
+Defined in log.ts:51
 
 **Parameters:**
 
@@ -139,7 +148,7 @@ ___
 
 ▸ **debug**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:42
+Defined in log.ts:43
 
 **Parameters:**
 
@@ -156,7 +165,7 @@ ___
 
 ▸ **error**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:43
+Defined in log.ts:44
 
 **Parameters:**
 
@@ -173,7 +182,7 @@ ___
 
 ▸ **getFilter**(`filter`: string): *string*
 
-Defined in log.ts:173
+Defined in log.ts:183
 
 **Parameters:**
 
@@ -189,7 +198,7 @@ ___
 
 ▸ **getLevel**(`level`: string): *string*
 
-Defined in log.ts:187
+Defined in log.ts:197
 
 **Parameters:**
 
@@ -205,7 +214,7 @@ ___
 
 ▸ **getStrategy**(`strategy`: string): *string*
 
-Defined in log.ts:203
+Defined in log.ts:213
 
 **Parameters:**
 
@@ -221,7 +230,7 @@ ___
 
 ▸ **info**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:44
+Defined in log.ts:45
 
 **Parameters:**
 
@@ -238,7 +247,7 @@ ___
 
 ▸ **internal**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:45
+Defined in log.ts:46
 
 **Parameters:**
 
@@ -255,7 +264,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:219
+Defined in log.ts:229
 
 **Parameters:**
 
@@ -269,14 +278,15 @@ ___
 
 ###  listen
 
-▸ **listen**(`listener`: `Listener`, `options`: `Record<string, any>`): *void*
+▸ **listen**(`instanceId`: string, `listener`: `Listener`, `options`: `Record<string, any>`): *void*
 
-Defined in log.ts:74
+Defined in log.ts:76
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
+`instanceId` | string |
 `listener` | `Listener` |
 `options` | `Record<string, any>` |
 
@@ -288,7 +298,7 @@ ___
 
 ▸ **log**(`id`: string[], `level?`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:82
+Defined in log.ts:92
 
 **Parameters:**
 
@@ -306,7 +316,7 @@ ___
 
 ▸ **logEvent**(`id`: string[], `level`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:99
+Defined in log.ts:109
 
 **Parameters:**
 
@@ -324,7 +334,7 @@ ___
 
 ▸ **logLevel**(`id`: string[], `level`: string): *void*
 
-Defined in log.ts:151
+Defined in log.ts:161
 
 **Parameters:**
 
@@ -337,7 +347,7 @@ Name | Type |
 
 ▸ **logLevel**(`id`: string[], `fnId`: string, `level`: string): *void*
 
-Defined in log.ts:153
+Defined in log.ts:163
 
 **Parameters:**
 
@@ -355,7 +365,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:223
+Defined in log.ts:233
 
 **Parameters:**
 
@@ -371,7 +381,7 @@ ___
 
 ▸ **trace**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:46
+Defined in log.ts:47
 
 **Parameters:**
 
@@ -388,7 +398,7 @@ ___
 
 ▸ **warn**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:47
+Defined in log.ts:48
 
 **Parameters:**
 
@@ -405,43 +415,43 @@ Name | Type |
 
 ### ▪ **levelEmojis**: *object*
 
-Defined in log.ts:9
+Defined in log.ts:10
 
 ###  debug
 
 • **debug**: *string* = "🐛"
 
-Defined in log.ts:10
+Defined in log.ts:11
 
 ###  error
 
 • **error**: *string* = "🛑"
 
-Defined in log.ts:11
+Defined in log.ts:12
 
 ###  info
 
 • **info**: *string* = "ℹ️"
 
-Defined in log.ts:12
+Defined in log.ts:13
 
 ###  internal
 
 • **internal**: *string* = "⚙️"
 
-Defined in log.ts:13
+Defined in log.ts:14
 
 ###  trace
 
 • **trace**: *string* = "💻"
 
-Defined in log.ts:14
+Defined in log.ts:15
 
 ###  warn
 
 • **warn**: *string* = "⚠️"
 
-Defined in log.ts:15
+Defined in log.ts:16
 
 ___
 
@@ -449,40 +459,40 @@ ___
 
 ### ▪ **levelSpaces**: *object*
 
-Defined in log.ts:18
+Defined in log.ts:19
 
 ###  debug
 
 • **debug**: *string* = ""
 
-Defined in log.ts:19
+Defined in log.ts:20
 
 ###  error
 
 • **error**: *string* = ""
 
-Defined in log.ts:20
+Defined in log.ts:21
 
 ###  info
 
 • **info**: *string* = " "
 
-Defined in log.ts:21
+Defined in log.ts:22
 
 ###  internal
 
 • **internal**: *string* = " "
 
-Defined in log.ts:22
+Defined in log.ts:23
 
 ###  trace
 
 • **trace**: *string* = ""
 
-Defined in log.ts:23
+Defined in log.ts:24
 
 ###  warn
 
 • **warn**: *string* = " "
 
-Defined in log.ts:24
+Defined in log.ts:25
