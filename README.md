@@ -29,18 +29,18 @@ log.warn([], "warning!")
 
 ## Log levels
 
-There are six log levels: `listener`, `trace`, `debug`, `info`, `warn`, and `error`.
+There are six log levels: `internal`, `trace`, `debug`, `info`, `warn`, and `error`.
 
 By default, the logger only logs messages at log level `info` or above. Change the log level through the `LOG` environment variable:
 
 ```bash
-LOG=listener npm test
+LOG=internal npm test
 ```
 
 Or programmatically:
 
 ```js
-log.logLevel([], "debug")
+log.logLevel([], "internal")
 ```
 
 ## Listener log level
@@ -80,5 +80,5 @@ LOG=MyClass.myFn npm test
 Add a filter, strategy, and level all at once:
 
 ```bash
-LOG=MyClass.myFn:args:listener npm test
+LOG=MyClass.myFn:args:internal npm test
 ```
