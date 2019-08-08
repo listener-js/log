@@ -74,16 +74,15 @@ export class Log {
   }
 
   public listen(
-    instanceId: string,
     listener: Listener,
     options: Record<string, any>
   ): void {
-    this.instanceId = instanceId
+    this.instanceId = options.instanceId
 
     if (options.logAll !== false) {
       listener.listen(
         ["**"],
-        [`${instanceId}.all`],
+        [`${this.instanceId}.all`],
         { prepend: 1000 }
       )
     }
