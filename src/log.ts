@@ -2,8 +2,9 @@ import { Listener } from "@listener-js/listener"
 
 export class Log {
   public defaultLevel = "info"
-  public instanceId = "log"
+  public instanceId: string
   public filter?: string
+  public listener: Listener
   public strategy = "ids"
 
   public eventLevels: Record<string, string> = {}
@@ -73,14 +74,9 @@ export class Log {
     this.logEvent(id.slice(1), level, ...value)
   }
 
-  public listen(
-    listener: Listener,
-    options: Record<string, any>
-  ): void {
-    this.instanceId = options.instanceId
-
+  public listen(options: Record<string, any>): void {
     if (options.logAll !== false) {
-      listener.listen(
+      this.listener.listen(
         ["**"],
         [`${this.instanceId}.all`],
         { prepend: 1000 }
