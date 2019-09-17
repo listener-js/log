@@ -37,10 +37,11 @@
 * [info](_log_.log.md#info)
 * [internal](_log_.log.md#internal)
 * [isLevel](_log_.log.md#private-islevel)
-* [listen](_log_.log.md#listen)
+* [listenerLoad](_log_.log.md#listenerload)
 * [log](_log_.log.md#log)
 * [logEvent](_log_.log.md#logevent)
 * [logLevel](_log_.log.md#loglevel)
+* [stringify](_log_.log.md#private-stringify)
 * [summarize](_log_.log.md#private-summarize)
 * [trace](_log_.log.md#trace)
 * [warn](_log_.log.md#warn)
@@ -56,7 +57,7 @@
 
 \+ **new Log**(): *[Log](_log_.log.md)*
 
-Defined in log.ts:35
+Defined in log.ts:46
 
 **Returns:** *[Log](_log_.log.md)*
 
@@ -96,8 +97,14 @@ ___
 
 ###  levels
 
-• **levels**: *string[]* = 
-    ["internal", "trace", "debug", "info", "warn", "error"]
+• **levels**: *string[]* =  [
+    "internal",
+    "trace",
+    "debug",
+    "info",
+    "warn",
+    "error",
+  ]
 
 Defined in log.ts:29
 
@@ -113,10 +120,15 @@ ___
 
 ###  listeners
 
-• **listeners**: *string[]* = 
-    ["all", "log", "logEvent", "logLevel", ...this.levels]
+• **listeners**: *string[]* =  [
+    "all",
+    "log",
+    "logEvent",
+    "logLevel",
+    ...this.levels,
+  ]
 
-Defined in log.ts:32
+Defined in log.ts:38
 
 ___
 
@@ -124,7 +136,7 @@ ___
 
 • **strategies**: *string[]* =  ["args", "argsJson", "ids"]
 
-Defined in log.ts:35
+Defined in log.ts:46
 
 ___
 
@@ -140,7 +152,7 @@ Defined in log.ts:8
 
 ▸ **all**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:52
+Defined in log.ts:63
 
 **Parameters:**
 
@@ -157,7 +169,7 @@ ___
 
 ▸ **debug**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:44
+Defined in log.ts:55
 
 **Parameters:**
 
@@ -174,7 +186,7 @@ ___
 
 ▸ **error**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:45
+Defined in log.ts:56
 
 **Parameters:**
 
@@ -191,7 +203,7 @@ ___
 
 ▸ **getFilter**(`filter`: string): *string*
 
-Defined in log.ts:178
+Defined in log.ts:202
 
 **Parameters:**
 
@@ -207,7 +219,7 @@ ___
 
 ▸ **getLevel**(`level`: string): *string*
 
-Defined in log.ts:192
+Defined in log.ts:216
 
 **Parameters:**
 
@@ -223,7 +235,7 @@ ___
 
 ▸ **getStrategy**(`strategy`: string): *string*
 
-Defined in log.ts:208
+Defined in log.ts:232
 
 **Parameters:**
 
@@ -239,7 +251,7 @@ ___
 
 ▸ **info**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:46
+Defined in log.ts:57
 
 **Parameters:**
 
@@ -256,7 +268,7 @@ ___
 
 ▸ **internal**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:47
+Defined in log.ts:58
 
 **Parameters:**
 
@@ -273,7 +285,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:224
+Defined in log.ts:248
 
 **Parameters:**
 
@@ -285,17 +297,21 @@ Name | Type |
 
 ___
 
-###  listen
+###  listenerLoad
 
-▸ **listen**(`options`: `Record<string, any>`): *void*
+▸ **listenerLoad**(`id`: string[], `instanceId`: string, `instance`: any, `listener`: `Listener`, `options?`: `Record<string, any>`): *void*
 
-Defined in log.ts:77
+Defined in log.ts:87
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`options` | `Record<string, any>` |
+`id` | string[] |
+`instanceId` | string |
+`instance` | any |
+`listener` | `Listener` |
+`options?` | `Record<string, any>` |
 
 **Returns:** *void*
 
@@ -305,7 +321,7 @@ ___
 
 ▸ **log**(`id`: string[], `level?`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:87
+Defined in log.ts:104
 
 **Parameters:**
 
@@ -323,7 +339,7 @@ ___
 
 ▸ **logEvent**(`id`: string[], `level`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:104
+Defined in log.ts:123
 
 **Parameters:**
 
@@ -341,7 +357,7 @@ ___
 
 ▸ **logLevel**(`id`: string[], `level`: string): *void*
 
-Defined in log.ts:156
+Defined in log.ts:176
 
 **Parameters:**
 
@@ -354,7 +370,7 @@ Name | Type |
 
 ▸ **logLevel**(`id`: string[], `fnId`: string, `level`: string): *void*
 
-Defined in log.ts:158
+Defined in log.ts:178
 
 **Parameters:**
 
@@ -368,11 +384,27 @@ Name | Type |
 
 ___
 
+### `Private` stringify
+
+▸ **stringify**(`o`: any): *string*
+
+Defined in log.ts:252
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`o` | any |
+
+**Returns:** *string*
+
+___
+
 ### `Private` summarize
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:228
+Defined in log.ts:266
 
 **Parameters:**
 
@@ -388,7 +420,7 @@ ___
 
 ▸ **trace**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:48
+Defined in log.ts:59
 
 **Parameters:**
 
@@ -405,7 +437,7 @@ ___
 
 ▸ **warn**(`id`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:49
+Defined in log.ts:60
 
 **Parameters:**
 

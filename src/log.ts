@@ -26,14 +26,25 @@ export class Log {
     warn: " ",
   }
 
-  public levels =
-    ["internal", "trace", "debug", "info", "warn", "error"]
-  
-  public listeners =
-    ["all", "log", "logEvent", "logLevel", ...this.levels]
-  
+  public levels = [
+    "internal",
+    "trace",
+    "debug",
+    "info",
+    "warn",
+    "error",
+  ]
+
+  public listeners = [
+    "all",
+    "log",
+    "logEvent",
+    "logLevel",
+    ...this.levels,
+  ]
+
   public strategies = ["args", "argsJson", "ids"]
-  
+
   public constructor() {
     this.defaultLevel = this.getLevel(process.env.LOG)
     this.filter = this.getFilter(process.env.LOG)
@@ -49,9 +60,7 @@ export class Log {
   public warn(id: string[], ...value: any[]): void { }
   /* eslint-enable */
 
-  public all(
-    id: string[], ...value: any[]
-  ): void {
+  public all(id: string[], ...value: any[]): void {
     if (
       id.indexOf(`${this.instanceId}.log`) > -1 ||
       id.indexOf(`${this.instanceId}.logEvent`) > -1
@@ -62,30 +71,40 @@ export class Log {
     const fnId = id[1] as string
     const regex = new RegExp(`${this.instanceId}\\.(.+)`)
     const match = fnId.match(regex)
-    
+
     let fnLevel
 
     if (match && match[1]) {
       fnLevel = match[1]
     }
 
-    const level = this.eventLevels[fnId] || fnLevel || "debug"
+    const level =
+      this.eventLevels[fnId] || fnLevel || "debug"
 
     this.logEvent(id.slice(1), level, ...value)
   }
 
-  public listen(options: Record<string, any>): void {
-    if (options.logAll !== false) {
+  public listenerLoad(
+    id: string[],
+    instanceId: string,
+    instance: any,
+    listener: Listener,
+    options?: Record<string, any>
+  ): void {
+    if (!options || options.logAll !== false) {
       this.listener.listen(
+        id,
         ["**"],
-        [`${this.instanceId}.all`],
+        `${this.instanceId}.all`,
         { prepend: 1000 }
       )
     }
   }
 
   public log(
-    id: string[], level?: string, ...value: any[]
+    id: string[],
+    level?: string,
+    ...value: any[]
   ): void {
     if (id.indexOf(`${this.instanceId}.logEvent`) > -1) {
       return
@@ -102,7 +121,9 @@ export class Log {
   }
 
   public logEvent(
-    id: string[], level: string, ...value: any[]
+    id: string[],
+    level: string,
+    ...value: any[]
   ): void {
     const slicedId = id.slice(1)
     const fnId = slicedId[0]
@@ -125,8 +146,8 @@ export class Log {
     }
 
     if (this.strategy === "argsJson") {
-      const json = value.map(
-        (v: any): string => JSON.stringify(v)
+      const json = value.map((v: any): string =>
+        this.stringify(v)
       )
       slicedId[0] += `(${json.join(", ")})`
     }
@@ -135,14 +156,13 @@ export class Log {
 
     if (
       value.length === 1 &&
-      (
-        fnId.match(new RegExp(`$${this.instanceId}\\.`)) ||
-        this.levels.indexOf(level) > this.levels.indexOf("debug")
-      ) &&
+      (fnId.match(new RegExp(`$${this.instanceId}\\.`)) ||
+        this.levels.indexOf(level) >
+          this.levels.indexOf("debug")) &&
       typeof value[0] === "string"
     ) {
       // eslint-disable-next-line no-console
-      extra = [ `\n   ${value[0]}` ]
+      extra = [`\n   ${value[0]}`]
     }
 
     // eslint-disable-next-line no-console
@@ -156,11 +176,15 @@ export class Log {
   public logLevel(id: string[], level: string): void
 
   public logLevel(
-    id: string[], fnId: string, level: string
+    id: string[],
+    fnId: string,
+    level: string
   ): void
-  
+
   public logLevel(
-    id: string[], fnId: string, level?: string
+    id: string[],
+    fnId: string,
+    level?: string
   ): void {
     if (!level) {
       level = fnId
@@ -223,6 +247,20 @@ export class Log {
 
   private isLevel(level: string): boolean {
     return this.levels.indexOf(level) > -1
+  }
+
+  private stringify(o: any): string {
+    const cache = []
+    const string = JSON.stringify(o, (key, value): any => {
+      if (typeof value === "object" && value !== null) {
+        if (cache.indexOf(value) !== -1) {
+          return "<circular>"
+        }
+        cache.push(value)
+      }
+      return value
+    })
+    return string
   }
 
   private summarize(arr: any[]): string[] {
