@@ -152,11 +152,15 @@ export class Log {
       slicedId[0] += `(${json.join(", ")})`
     }
 
+    const directCall = fnId.match(
+      new RegExp(`^${this.instanceId}\\.`)
+    )
+
     let extra = []
 
     if (
       value.length === 1 &&
-      (fnId.match(new RegExp(`$${this.instanceId}\\.`)) ||
+      (directCall ||
         this.levels.indexOf(level) >
           this.levels.indexOf("debug")) &&
       typeof value[0] === "string"

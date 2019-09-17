@@ -203,7 +203,7 @@ ___
 
 ▸ **getFilter**(`filter`: string): *string*
 
-Defined in log.ts:202
+Defined in log.ts:206
 
 **Parameters:**
 
@@ -219,7 +219,7 @@ ___
 
 ▸ **getLevel**(`level`: string): *string*
 
-Defined in log.ts:216
+Defined in log.ts:220
 
 **Parameters:**
 
@@ -235,7 +235,7 @@ ___
 
 ▸ **getStrategy**(`strategy`: string): *string*
 
-Defined in log.ts:232
+Defined in log.ts:236
 
 **Parameters:**
 
@@ -285,7 +285,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:248
+Defined in log.ts:252
 
 **Parameters:**
 
@@ -357,7 +357,7 @@ ___
 
 ▸ **logLevel**(`id`: string[], `level`: string): *void*
 
-Defined in log.ts:176
+Defined in log.ts:180
 
 **Parameters:**
 
@@ -370,7 +370,7 @@ Name | Type |
 
 ▸ **logLevel**(`id`: string[], `fnId`: string, `level`: string): *void*
 
-Defined in log.ts:178
+Defined in log.ts:182
 
 **Parameters:**
 
@@ -388,7 +388,7 @@ ___
 
 ▸ **stringify**(`o`: any): *string*
 
-Defined in log.ts:252
+Defined in log.ts:256
 
 **Parameters:**
 
@@ -404,7 +404,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:266
+Defined in log.ts:270
 
 **Parameters:**
 
