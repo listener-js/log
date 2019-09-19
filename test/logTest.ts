@@ -11,7 +11,7 @@ class Test {
 
 const t = new Test()
 
-listener({ log, t })
+listener([], { log, t })
 
 test("log", (): void => {
   log.logLevel([], "internal")

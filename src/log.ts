@@ -84,20 +84,18 @@ export class Log {
     this.logEvent(id.slice(1), level, ...value)
   }
 
-  public listenerLoad(
+  public listenerInit(
     id: string[],
     instanceId: string,
     instance: any,
+    instances: Record<string, any>,
     listener: Listener,
     options?: Record<string, any>
   ): void {
     if (!options || options.logAll !== false) {
-      this.listener.listen(
-        id,
-        ["**"],
-        `${this.instanceId}.all`,
-        { prepend: 1000 }
-      )
+      listener.listen(id, ["**"], `${instanceId}.all`, {
+        prepend: 1000,
+      })
     }
   }
 

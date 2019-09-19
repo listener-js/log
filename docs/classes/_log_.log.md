@@ -1,6 +1,4 @@
-> **[@listener-js/log](../README.md)**
-
-[Globals](../globals.md) / ["log"](../modules/_log_.md) / [Log](_log_.log.md) /
+[@listener-js/log](../README.md) › [Globals](../globals.md) › ["log"](../modules/_log_.md) › [Log](_log_.log.md)
 
 # Class: Log
 
@@ -37,7 +35,7 @@
 * [info](_log_.log.md#info)
 * [internal](_log_.log.md#internal)
 * [isLevel](_log_.log.md#private-islevel)
-* [listenerLoad](_log_.log.md#listenerload)
+* [listenerInit](_log_.log.md#listenerinit)
 * [log](_log_.log.md#log)
 * [logEvent](_log_.log.md#logevent)
 * [logLevel](_log_.log.md#loglevel)
@@ -73,7 +71,7 @@ ___
 
 ###  eventLevels
 
-• **eventLevels**: *`Record<string, string>`*
+• **eventLevels**: *Record‹string, string›*
 
 Defined in log.ts:10
 
@@ -112,7 +110,7 @@ ___
 
 ###  listener
 
-• **listener**: *`Listener`*
+• **listener**: *Listener*
 
 Defined in log.ts:7
 
@@ -203,7 +201,7 @@ ___
 
 ▸ **getFilter**(`filter`: string): *string*
 
-Defined in log.ts:206
+Defined in log.ts:204
 
 **Parameters:**
 
@@ -219,7 +217,7 @@ ___
 
 ▸ **getLevel**(`level`: string): *string*
 
-Defined in log.ts:220
+Defined in log.ts:218
 
 **Parameters:**
 
@@ -235,7 +233,7 @@ ___
 
 ▸ **getStrategy**(`strategy`: string): *string*
 
-Defined in log.ts:236
+Defined in log.ts:234
 
 **Parameters:**
 
@@ -285,7 +283,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:252
+Defined in log.ts:250
 
 **Parameters:**
 
@@ -297,9 +295,9 @@ Name | Type |
 
 ___
 
-###  listenerLoad
+###  listenerInit
 
-▸ **listenerLoad**(`id`: string[], `instanceId`: string, `instance`: any, `listener`: `Listener`, `options?`: `Record<string, any>`): *void*
+▸ **listenerInit**(`id`: string[], `instanceId`: string, `instance`: any, `instances`: Record‹string, any›, `listener`: Listener, `options?`: Record‹string, any›): *void*
 
 Defined in log.ts:87
 
@@ -310,8 +308,9 @@ Name | Type |
 `id` | string[] |
 `instanceId` | string |
 `instance` | any |
-`listener` | `Listener` |
-`options?` | `Record<string, any>` |
+`instances` | Record‹string, any› |
+`listener` | Listener |
+`options?` | Record‹string, any› |
 
 **Returns:** *void*
 
@@ -321,7 +320,7 @@ ___
 
 ▸ **log**(`id`: string[], `level?`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:104
+Defined in log.ts:102
 
 **Parameters:**
 
@@ -339,7 +338,7 @@ ___
 
 ▸ **logEvent**(`id`: string[], `level`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:123
+Defined in log.ts:121
 
 **Parameters:**
 
@@ -357,7 +356,7 @@ ___
 
 ▸ **logLevel**(`id`: string[], `level`: string): *void*
 
-Defined in log.ts:180
+Defined in log.ts:178
 
 **Parameters:**
 
@@ -370,7 +369,7 @@ Name | Type |
 
 ▸ **logLevel**(`id`: string[], `fnId`: string, `level`: string): *void*
 
-Defined in log.ts:182
+Defined in log.ts:180
 
 **Parameters:**
 
@@ -388,7 +387,7 @@ ___
 
 ▸ **stringify**(`o`: any): *string*
 
-Defined in log.ts:256
+Defined in log.ts:254
 
 **Parameters:**
 
@@ -404,7 +403,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:270
+Defined in log.ts:268
 
 **Parameters:**
 

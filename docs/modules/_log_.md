@@ -1,6 +1,4 @@
-> **[@listener-js/log](../README.md)**
-
-[Globals](../globals.md) / ["log"](_log_.md) /
+[@listener-js/log](../README.md) › [Globals](../globals.md) › ["log"](_log_.md)
 
 # External module: "log"
 
@@ -20,4 +18,4 @@
 
 • **log**: *[Log](../classes/_log_.log.md)* =  new Log()
 
-Defined in log.ts:298
+Defined in log.ts:296

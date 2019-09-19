@@ -1,6 +1,4 @@
-> **[@listener-js/log](README.md)**
-
-[Globals](globals.md) /
+[@listener-js/log](README.md) › [Globals](globals.md)
 
 # @listener-js/log
 
