@@ -264,7 +264,7 @@ export class Log {
       }
       return value
     })
-    if (string.length > 40) {
+    if (string && string.length > 40) {
       return this.summarize([o])[0]
     }
     return string
