@@ -267,7 +267,7 @@ export class Log {
       }
       return value
     })
-    if (string && string.length > 60) {
+    if (string && string.length > 200) {
       return `<${typeof o}>`
     }
     return string
