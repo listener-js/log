@@ -18,4 +18,4 @@
 
 • **log**: *[Log](../classes/_log_.log.md)* =  new Log()
 
-Defined in log.ts:296
+Defined in log.ts:298

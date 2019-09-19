@@ -92,6 +92,8 @@ export class Log {
     listener: Listener,
     options?: Record<string, any>
   ): void {
+    this.instanceId = instanceId
+
     if (!options || options.logAll !== false) {
       listener.listen(id, ["**"], `${instanceId}.all`, {
         prepend: 1000,
