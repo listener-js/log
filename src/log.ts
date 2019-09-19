@@ -255,6 +255,9 @@ export class Log {
 
   private stringify(o: any): string {
     const cache = []
+    if (o === undefined) {
+      return "undefined"
+    }
     const string = JSON.stringify(o, (key, value): any => {
       if (typeof value === "object" && value !== null) {
         if (cache.indexOf(value) !== -1) {
@@ -264,8 +267,8 @@ export class Log {
       }
       return value
     })
-    if (string && string.length > 40) {
-      return this.summarize([o])[0]
+    if (string && string.length > 60) {
+      return `<${typeof o}>`
     }
     return string
   }
