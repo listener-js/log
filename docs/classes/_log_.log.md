@@ -403,7 +403,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:270
+Defined in log.ts:273
 
 **Parameters:**
 
