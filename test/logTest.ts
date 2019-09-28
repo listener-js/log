@@ -1,17 +1,15 @@
-import { listener } from "@listener-js/listener"
+import { load } from "@listener-js/listener"
 import { log } from "../"
 
 class Test {
-  public listeners = ["hi"]
-
-  public hi(id: string[]): string[] {
-    return id
+  public hi(lid: string[]): string[] {
+    return lid
   }
 }
 
 const t = new Test()
 
-listener([], { log, t })
+load([], { log, t })
 
 test("log", (): void => {
   log.logLevel([], "internal")

@@ -1,4 +1,7 @@
-import { Listener } from "@listener-js/listener"
+import {
+  Listener,
+  ListenerBind,
+} from "@listener-js/listener"
 
 export class Log {
   public defaultLevel = "info"
@@ -35,14 +38,6 @@ export class Log {
     "error",
   ]
 
-  public listeners = [
-    "all",
-    "log",
-    "logEvent",
-    "logLevel",
-    ...this.levels,
-  ]
-
   public strategies = ["args", "argsJson", "ids"]
 
   public constructor() {
@@ -51,24 +46,23 @@ export class Log {
     this.strategy = this.getStrategy(process.env.LOG)
   }
 
-  /* eslint-disable */
-  public debug(id: string[], ...value: any[]): void { }
-  public error(id: string[], ...value: any[]): void { }
-  public info(id: string[], ...value: any[]): void { }
-  public internal(id: string[], ...value: any[]): void { }
-  public trace(id: string[], ...value: any[]): void { }
-  public warn(id: string[], ...value: any[]): void { }
-  /* eslint-enable */
+  public debug(lid: string[], ...value: any[]): void {}
+  public error(lid: string[], ...value: any[]): void {}
+  public info(lid: string[], ...value: any[]): void {}
+  public internal(lid: string[], ...value: any[]): void {}
+  public trace(lid: string[], ...value: any[]): void {}
+  public warn(lid: string[], ...value: any[]): void {}
 
-  public all(id: string[], ...value: any[]): void {
+  public all(lid: string[], ...value: any[]): void {
     if (
-      id.indexOf(`${this.instanceId}.log`) > -1 ||
-      id.indexOf(`${this.instanceId}.logEvent`) > -1
+      !this.instanceId ||
+      lid.indexOf(`${this.instanceId}.log`) > -1 ||
+      lid.indexOf(`${this.instanceId}.logEvent`) > -1
     ) {
       return
     }
 
-    const fnId = id[1] as string
+    const fnId = lid[1] as string
     const regex = new RegExp(`${this.instanceId}\\.(.+)`)
     const match = fnId.match(regex)
 
@@ -81,32 +75,15 @@ export class Log {
     const level =
       this.eventLevels[fnId] || fnLevel || "debug"
 
-    this.logEvent(id.slice(1), level, ...value)
-  }
-
-  public listenerInit(
-    id: string[],
-    instanceId: string,
-    instance: any,
-    instances: Record<string, any>,
-    listener: Listener,
-    options?: Record<string, any>
-  ): void {
-    this.instanceId = instanceId
-
-    if (!options || options.logAll !== false) {
-      listener.listen(id, ["**"], `${instanceId}.all`, {
-        prepend: 1000,
-      })
-    }
+    this.logEvent(lid.slice(1), level, ...value)
   }
 
   public log(
-    id: string[],
+    lid: string[],
     level?: string,
     ...value: any[]
   ): void {
-    if (id.indexOf(`${this.instanceId}.logEvent`) > -1) {
+    if (lid.indexOf(`${this.instanceId}.logEvent`) > -1) {
       return
     }
 
@@ -117,15 +94,15 @@ export class Log {
       level = "debug"
     }
 
-    this.logEvent(id, level, ...value)
+    this.logEvent(lid, level, ...value)
   }
 
   public logEvent(
-    id: string[],
+    lid: string[],
     level: string,
     ...value: any[]
   ): void {
-    const slicedId = id.slice(1)
+    const slicedId = lid.slice(1)
     const fnId = slicedId[0]
 
     if (this.filter && slicedId.indexOf(this.filter) < 0) {
@@ -177,16 +154,16 @@ export class Log {
     )
   }
 
-  public logLevel(id: string[], level: string): void
+  public logLevel(lid: string[], level: string): void
 
   public logLevel(
-    id: string[],
+    lid: string[],
     fnId: string,
     level: string
   ): void
 
   public logLevel(
-    id: string[],
+    lid: string[],
     fnId: string,
     level?: string
   ): void {
@@ -251,6 +228,26 @@ export class Log {
 
   private isLevel(level: string): boolean {
     return this.levels.indexOf(level) > -1
+  }
+
+  private listenerBind(
+    lid: string[],
+    instanceId: string
+  ): ListenerBind {
+    return [
+      [["**"], `${instanceId}.all`, { prepend: 1000 }],
+      [
+        ["listener.instanceLoaded", instanceId, "**"],
+        `${instanceId}.listenerLoaded`,
+      ],
+    ]
+  }
+
+  private listenerLoaded(
+    lid: string[],
+    instanceId: string
+  ): void {
+    this.instanceId = instanceId
   }
 
   private stringify(o: any): string {

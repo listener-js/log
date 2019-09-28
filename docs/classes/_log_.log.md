@@ -20,7 +20,6 @@
 * [instanceId](_log_.log.md#instanceid)
 * [levels](_log_.log.md#levels)
 * [listener](_log_.log.md#listener)
-* [listeners](_log_.log.md#listeners)
 * [strategies](_log_.log.md#strategies)
 * [strategy](_log_.log.md#strategy)
 
@@ -35,7 +34,8 @@
 * [info](_log_.log.md#info)
 * [internal](_log_.log.md#internal)
 * [isLevel](_log_.log.md#private-islevel)
-* [listenerInit](_log_.log.md#listenerinit)
+* [listenerBind](_log_.log.md#private-listenerbind)
+* [listenerLoaded](_log_.log.md#private-listenerloaded)
 * [log](_log_.log.md#log)
 * [logEvent](_log_.log.md#logevent)
 * [logLevel](_log_.log.md#loglevel)
@@ -55,7 +55,7 @@
 
 \+ **new Log**(): *[Log](_log_.log.md)*
 
-Defined in log.ts:46
+Defined in log.ts:41
 
 **Returns:** *[Log](_log_.log.md)*
 
@@ -65,7 +65,7 @@ Defined in log.ts:46
 
 • **defaultLevel**: *string* = "info"
 
-Defined in log.ts:4
+Defined in log.ts:7
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 • **eventLevels**: *Record‹string, string›*
 
-Defined in log.ts:10
+Defined in log.ts:13
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 • **filter**? : *string*
 
-Defined in log.ts:6
+Defined in log.ts:9
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 • **instanceId**: *string*
 
-Defined in log.ts:5
+Defined in log.ts:8
 
 ___
 
@@ -104,7 +104,7 @@ ___
     "error",
   ]
 
-Defined in log.ts:29
+Defined in log.ts:32
 
 ___
 
@@ -112,21 +112,7 @@ ___
 
 • **listener**: *Listener*
 
-Defined in log.ts:7
-
-___
-
-###  listeners
-
-• **listeners**: *string[]* =  [
-    "all",
-    "log",
-    "logEvent",
-    "logLevel",
-    ...this.levels,
-  ]
-
-Defined in log.ts:38
+Defined in log.ts:10
 
 ___
 
@@ -134,7 +120,7 @@ ___
 
 • **strategies**: *string[]* =  ["args", "argsJson", "ids"]
 
-Defined in log.ts:46
+Defined in log.ts:41
 
 ___
 
@@ -142,21 +128,21 @@ ___
 
 • **strategy**: *string* = "ids"
 
-Defined in log.ts:8
+Defined in log.ts:11
 
 ## Methods
 
 ###  all
 
-▸ **all**(`id`: string[], ...`value`: any[]): *void*
+▸ **all**(`lid`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:63
+Defined in log.ts:56
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | string[] |
+`lid` | string[] |
 `...value` | any[] |
 
 **Returns:** *void*
@@ -165,15 +151,15 @@ ___
 
 ###  debug
 
-▸ **debug**(`id`: string[], ...`value`: any[]): *void*
+▸ **debug**(`lid`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:55
+Defined in log.ts:49
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | string[] |
+`lid` | string[] |
 `...value` | any[] |
 
 **Returns:** *void*
@@ -182,15 +168,15 @@ ___
 
 ###  error
 
-▸ **error**(`id`: string[], ...`value`: any[]): *void*
+▸ **error**(`lid`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:56
+Defined in log.ts:50
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | string[] |
+`lid` | string[] |
 `...value` | any[] |
 
 **Returns:** *void*
@@ -201,7 +187,7 @@ ___
 
 ▸ **getFilter**(`filter`: string): *string*
 
-Defined in log.ts:206
+Defined in log.ts:183
 
 **Parameters:**
 
@@ -217,7 +203,7 @@ ___
 
 ▸ **getLevel**(`level`: string): *string*
 
-Defined in log.ts:220
+Defined in log.ts:197
 
 **Parameters:**
 
@@ -233,7 +219,7 @@ ___
 
 ▸ **getStrategy**(`strategy`: string): *string*
 
-Defined in log.ts:236
+Defined in log.ts:213
 
 **Parameters:**
 
@@ -247,15 +233,15 @@ ___
 
 ###  info
 
-▸ **info**(`id`: string[], ...`value`: any[]): *void*
+▸ **info**(`lid`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:57
+Defined in log.ts:51
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | string[] |
+`lid` | string[] |
 `...value` | any[] |
 
 **Returns:** *void*
@@ -264,15 +250,15 @@ ___
 
 ###  internal
 
-▸ **internal**(`id`: string[], ...`value`: any[]): *void*
+▸ **internal**(`lid`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:58
+Defined in log.ts:52
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | string[] |
+`lid` | string[] |
 `...value` | any[] |
 
 **Returns:** *void*
@@ -283,7 +269,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:252
+Defined in log.ts:229
 
 **Parameters:**
 
@@ -295,22 +281,35 @@ Name | Type |
 
 ___
 
-###  listenerInit
+### `Private` listenerBind
 
-▸ **listenerInit**(`id`: string[], `instanceId`: string, `instance`: any, `instances`: Record‹string, any›, `listener`: Listener, `options?`: Record‹string, any›): *void*
+▸ **listenerBind**(`lid`: string[], `instanceId`: string): *ListenerBind*
 
-Defined in log.ts:87
+Defined in log.ts:233
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | string[] |
+`lid` | string[] |
 `instanceId` | string |
-`instance` | any |
-`instances` | Record‹string, any› |
-`listener` | Listener |
-`options?` | Record‹string, any› |
+
+**Returns:** *ListenerBind*
+
+___
+
+### `Private` listenerLoaded
+
+▸ **listenerLoaded**(`lid`: string[], `instanceId`: string): *void*
+
+Defined in log.ts:246
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`lid` | string[] |
+`instanceId` | string |
 
 **Returns:** *void*
 
@@ -318,15 +317,15 @@ ___
 
 ###  log
 
-▸ **log**(`id`: string[], `level?`: string, ...`value`: any[]): *void*
+▸ **log**(`lid`: string[], `level?`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:104
+Defined in log.ts:81
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | string[] |
+`lid` | string[] |
 `level?` | string |
 `...value` | any[] |
 
@@ -336,15 +335,15 @@ ___
 
 ###  logEvent
 
-▸ **logEvent**(`id`: string[], `level`: string, ...`value`: any[]): *void*
+▸ **logEvent**(`lid`: string[], `level`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:123
+Defined in log.ts:100
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | string[] |
+`lid` | string[] |
 `level` | string |
 `...value` | any[] |
 
@@ -354,28 +353,28 @@ ___
 
 ###  logLevel
 
-▸ **logLevel**(`id`: string[], `level`: string): *void*
+▸ **logLevel**(`lid`: string[], `level`: string): *void*
 
-Defined in log.ts:180
+Defined in log.ts:157
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | string[] |
+`lid` | string[] |
 `level` | string |
 
 **Returns:** *void*
 
-▸ **logLevel**(`id`: string[], `fnId`: string, `level`: string): *void*
+▸ **logLevel**(`lid`: string[], `fnId`: string, `level`: string): *void*
 
-Defined in log.ts:182
+Defined in log.ts:159
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | string[] |
+`lid` | string[] |
 `fnId` | string |
 `level` | string |
 
@@ -387,7 +386,7 @@ ___
 
 ▸ **stringify**(`o`: any): *string*
 
-Defined in log.ts:256
+Defined in log.ts:253
 
 **Parameters:**
 
@@ -403,7 +402,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:276
+Defined in log.ts:273
 
 **Parameters:**
 
@@ -417,15 +416,15 @@ ___
 
 ###  trace
 
-▸ **trace**(`id`: string[], ...`value`: any[]): *void*
+▸ **trace**(`lid`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:59
+Defined in log.ts:53
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | string[] |
+`lid` | string[] |
 `...value` | any[] |
 
 **Returns:** *void*
@@ -434,15 +433,15 @@ ___
 
 ###  warn
 
-▸ **warn**(`id`: string[], ...`value`: any[]): *void*
+▸ **warn**(`lid`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:60
+Defined in log.ts:54
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | string[] |
+`lid` | string[] |
 `...value` | any[] |
 
 **Returns:** *void*
@@ -453,43 +452,43 @@ Name | Type |
 
 ### ▪ **levelEmojis**: *object*
 
-Defined in log.ts:11
+Defined in log.ts:14
 
 ###  debug
 
 • **debug**: *string* = "🐛"
 
-Defined in log.ts:12
+Defined in log.ts:15
 
 ###  error
 
 • **error**: *string* = "🛑"
 
-Defined in log.ts:13
+Defined in log.ts:16
 
 ###  info
 
 • **info**: *string* = "ℹ️"
 
-Defined in log.ts:14
+Defined in log.ts:17
 
 ###  internal
 
 • **internal**: *string* = "⚙️"
 
-Defined in log.ts:15
+Defined in log.ts:18
 
 ###  trace
 
 • **trace**: *string* = "💻"
 
-Defined in log.ts:16
+Defined in log.ts:19
 
 ###  warn
 
 • **warn**: *string* = "⚠️"
 
-Defined in log.ts:17
+Defined in log.ts:20
 
 ___
 
@@ -497,40 +496,40 @@ ___
 
 ### ▪ **levelSpaces**: *object*
 
-Defined in log.ts:20
+Defined in log.ts:23
 
 ###  debug
 
 • **debug**: *string* = ""
 
-Defined in log.ts:21
+Defined in log.ts:24
 
 ###  error
 
 • **error**: *string* = ""
 
-Defined in log.ts:22
+Defined in log.ts:25
 
 ###  info
 
 • **info**: *string* = " "
 
-Defined in log.ts:23
+Defined in log.ts:26
 
 ###  internal
 
 • **internal**: *string* = " "
 
-Defined in log.ts:24
+Defined in log.ts:27
 
 ###  trace
 
 • **trace**: *string* = ""
 
-Defined in log.ts:25
+Defined in log.ts:28
 
 ###  warn
 
 • **warn**: *string* = " "
 
-Defined in log.ts:26
+Defined in log.ts:29
