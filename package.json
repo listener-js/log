@@ -25,12 +25,12 @@
     "docs": "typedoc --out docs --media media --theme markdown src/*.ts"
   },
   "devDependencies": {
-    "@listener-js/listener": "2.8.1",
+    "@listener-js/listener": "2.8.3",
     "@types/jest": "24.0.18",
     "@types/node": "12.7.8",
     "@typescript-eslint/eslint-plugin": "2.3.1",
     "@typescript-eslint/parser": "2.3.1",
-    "eslint": "<6",
+    "eslint": "6.5.0",
     "eslint-config-prettier": "6.3.0",
     "eslint-plugin-prettier": "3.1.1",
     "husky": "3.0.7",
