@@ -234,14 +234,14 @@ export class Log {
     return this.levels.indexOf(level) > -1
   }
 
-  private listenerBind(
+  private listenerBindings(
     lid: string[],
     instanceId: string
   ): ListenerBind {
     return [
       [["**"], `${instanceId}.all`, { prepend: 1000 }],
       [
-        ["listener.instanceLoaded", instanceId, "**"],
+        ["listener.listenerLoaded", instanceId, "**"],
         `${instanceId}.listenerLoaded`,
       ],
       [

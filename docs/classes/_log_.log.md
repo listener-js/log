@@ -34,7 +34,7 @@
 * [info](_log_.log.md#info)
 * [internal](_log_.log.md#internal)
 * [isLevel](_log_.log.md#private-islevel)
-* [listenerBind](_log_.log.md#private-listenerbind)
+* [listenerBindings](_log_.log.md#private-listenerbindings)
 * [listenerLoaded](_log_.log.md#private-listenerloaded)
 * [listenerReset](_log_.log.md#listenerreset)
 * [log](_log_.log.md#log)
@@ -282,9 +282,9 @@ Name | Type |
 
 ___
 
-### `Private` listenerBind
+### `Private` listenerBindings
 
-▸ **listenerBind**(`lid`: string[], `instanceId`: string): *ListenerBind*
+▸ **listenerBindings**(`lid`: string[], `instanceId`: string): *ListenerBind*
 
 Defined in log.ts:237
 
