@@ -36,6 +36,7 @@
 * [isLevel](_log_.log.md#private-islevel)
 * [listenerBind](_log_.log.md#private-listenerbind)
 * [listenerLoaded](_log_.log.md#private-listenerloaded)
+* [listenerReset](_log_.log.md#listenerreset)
 * [log](_log_.log.md#log)
 * [logEvent](_log_.log.md#logevent)
 * [logLevel](_log_.log.md#loglevel)
@@ -187,7 +188,7 @@ ___
 
 ▸ **getFilter**(`filter`: string): *string*
 
-Defined in log.ts:183
+Defined in log.ts:187
 
 **Parameters:**
 
@@ -203,7 +204,7 @@ ___
 
 ▸ **getLevel**(`level`: string): *string*
 
-Defined in log.ts:197
+Defined in log.ts:201
 
 **Parameters:**
 
@@ -219,7 +220,7 @@ ___
 
 ▸ **getStrategy**(`strategy`: string): *string*
 
-Defined in log.ts:213
+Defined in log.ts:217
 
 **Parameters:**
 
@@ -269,7 +270,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:229
+Defined in log.ts:233
 
 **Parameters:**
 
@@ -285,7 +286,7 @@ ___
 
 ▸ **listenerBind**(`lid`: string[], `instanceId`: string): *ListenerBind*
 
-Defined in log.ts:233
+Defined in log.ts:237
 
 **Parameters:**
 
@@ -302,7 +303,7 @@ ___
 
 ▸ **listenerLoaded**(`lid`: string[], `instanceId`: string): *void*
 
-Defined in log.ts:246
+Defined in log.ts:255
 
 **Parameters:**
 
@@ -315,11 +316,27 @@ Name | Type |
 
 ___
 
+###  listenerReset
+
+▸ **listenerReset**(`lid`: string[]): *void*
+
+Defined in log.ts:262
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`lid` | string[] |
+
+**Returns:** *void*
+
+___
+
 ###  log
 
 ▸ **log**(`lid`: string[], `level?`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:81
+Defined in log.ts:85
 
 **Parameters:**
 
@@ -337,7 +354,7 @@ ___
 
 ▸ **logEvent**(`lid`: string[], `level`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:100
+Defined in log.ts:104
 
 **Parameters:**
 
@@ -355,7 +372,7 @@ ___
 
 ▸ **logLevel**(`lid`: string[], `level`: string): *void*
 
-Defined in log.ts:157
+Defined in log.ts:161
 
 **Parameters:**
 
@@ -368,7 +385,7 @@ Name | Type |
 
 ▸ **logLevel**(`lid`: string[], `fnId`: string, `level`: string): *void*
 
-Defined in log.ts:159
+Defined in log.ts:163
 
 **Parameters:**
 
@@ -386,7 +403,7 @@ ___
 
 ▸ **stringify**(`o`: any): *string*
 
-Defined in log.ts:253
+Defined in log.ts:266
 
 **Parameters:**
 
@@ -402,7 +419,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:273
+Defined in log.ts:286
 
 **Parameters:**
 

@@ -68,7 +68,11 @@ export class Log {
 
     let fnLevel
 
-    if (match && match[1]) {
+    if (
+      match &&
+      match[1] &&
+      this.levels.indexOf(match[1]) > -1
+    ) {
       fnLevel = match[1]
     }
 
@@ -240,6 +244,11 @@ export class Log {
         ["listener.instanceLoaded", instanceId, "**"],
         `${instanceId}.listenerLoaded`,
       ],
+      [
+        ["listener.reset", "**"],
+        `${instanceId}.listenerReset`,
+        { prepend: true },
+      ],
     ]
   }
 
@@ -248,6 +257,10 @@ export class Log {
     instanceId: string
   ): void {
     this.instanceId = instanceId
+  }
+
+  public listenerReset(lid: string[]): void {
+    delete this.instanceId
   }
 
   private stringify(o: any): string {
