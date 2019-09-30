@@ -1,5 +1,5 @@
 import { load } from "@listener-js/listener"
-import { log } from "../"
+import log from "../"
 
 class Test {
   public hi(lid: string[]): string[] {

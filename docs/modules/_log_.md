@@ -7,15 +7,3 @@
 ### Classes
 
 * [Log](../classes/_log_.log.md)
-
-### Variables
-
-* [log](_log_.md#const-log)
-
-## Variables
-
-### `Const` log
-
-• **log**: *[Log](../classes/_log_.log.md)* =  new Log()
-
-Defined in log.ts:314
