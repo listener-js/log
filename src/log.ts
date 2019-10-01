@@ -41,9 +41,7 @@ export class Log {
   public strategies = ["args", "argsJson", "ids"]
 
   public constructor() {
-    this.defaultLevel = this.getLevel(process.env.LOG)
-    this.filter = this.getFilter(process.env.LOG)
-    this.strategy = this.getStrategy(process.env.LOG)
+    this.listenerReset(["log.constructor"])
   }
 
   public debug(lid: string[], ...value: any[]): void {}
@@ -240,15 +238,6 @@ export class Log {
   ): ListenerBind {
     return [
       [["**"], `${instanceId}.all`, { prepend: 1000 }],
-      [
-        ["listener.listenerLoaded", instanceId, "**"],
-        `${instanceId}.listenerLoaded`,
-      ],
-      [
-        ["listener.reset", "**"],
-        `${instanceId}.listenerReset`,
-        { prepend: true },
-      ],
     ]
   }
 
@@ -261,6 +250,10 @@ export class Log {
 
   public listenerReset(lid: string[]): void {
     delete this.instanceId
+
+    this.defaultLevel = this.getLevel(process.env.LOG)
+    this.filter = this.getFilter(process.env.LOG)
+    this.strategy = this.getStrategy(process.env.LOG)
   }
 
   private stringify(o: any): string {

@@ -137,7 +137,7 @@ Defined in log.ts:11
 
 ▸ **all**(`lid`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:56
+Defined in log.ts:54
 
 **Parameters:**
 
@@ -154,7 +154,7 @@ ___
 
 ▸ **debug**(`lid`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:49
+Defined in log.ts:47
 
 **Parameters:**
 
@@ -171,7 +171,7 @@ ___
 
 ▸ **error**(`lid`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:50
+Defined in log.ts:48
 
 **Parameters:**
 
@@ -188,7 +188,7 @@ ___
 
 ▸ **getFilter**(`filter`: string): *string*
 
-Defined in log.ts:187
+Defined in log.ts:185
 
 **Parameters:**
 
@@ -204,7 +204,7 @@ ___
 
 ▸ **getLevel**(`level`: string): *string*
 
-Defined in log.ts:201
+Defined in log.ts:199
 
 **Parameters:**
 
@@ -220,7 +220,7 @@ ___
 
 ▸ **getStrategy**(`strategy`: string): *string*
 
-Defined in log.ts:217
+Defined in log.ts:215
 
 **Parameters:**
 
@@ -236,7 +236,7 @@ ___
 
 ▸ **info**(`lid`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:51
+Defined in log.ts:49
 
 **Parameters:**
 
@@ -253,7 +253,7 @@ ___
 
 ▸ **internal**(`lid`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:52
+Defined in log.ts:50
 
 **Parameters:**
 
@@ -270,7 +270,7 @@ ___
 
 ▸ **isLevel**(`level`: string): *boolean*
 
-Defined in log.ts:233
+Defined in log.ts:231
 
 **Parameters:**
 
@@ -286,7 +286,7 @@ ___
 
 ▸ **listenerBindings**(`lid`: string[], `instanceId`: string): *ListenerBind*
 
-Defined in log.ts:237
+Defined in log.ts:235
 
 **Parameters:**
 
@@ -303,7 +303,7 @@ ___
 
 ▸ **listenerLoaded**(`lid`: string[], `instanceId`: string): *void*
 
-Defined in log.ts:255
+Defined in log.ts:244
 
 **Parameters:**
 
@@ -320,7 +320,7 @@ ___
 
 ▸ **listenerReset**(`lid`: string[]): *void*
 
-Defined in log.ts:262
+Defined in log.ts:251
 
 **Parameters:**
 
@@ -336,7 +336,7 @@ ___
 
 ▸ **log**(`lid`: string[], `level?`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:85
+Defined in log.ts:83
 
 **Parameters:**
 
@@ -354,7 +354,7 @@ ___
 
 ▸ **logEvent**(`lid`: string[], `level`: string, ...`value`: any[]): *void*
 
-Defined in log.ts:104
+Defined in log.ts:102
 
 **Parameters:**
 
@@ -372,7 +372,7 @@ ___
 
 ▸ **logLevel**(`lid`: string[], `level`: string): *void*
 
-Defined in log.ts:161
+Defined in log.ts:159
 
 **Parameters:**
 
@@ -385,7 +385,7 @@ Name | Type |
 
 ▸ **logLevel**(`lid`: string[], `fnId`: string, `level`: string): *void*
 
-Defined in log.ts:163
+Defined in log.ts:161
 
 **Parameters:**
 
@@ -403,7 +403,7 @@ ___
 
 ▸ **stringify**(`o`: any): *string*
 
-Defined in log.ts:266
+Defined in log.ts:259
 
 **Parameters:**
 
@@ -419,7 +419,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:286
+Defined in log.ts:279
 
 **Parameters:**
 
@@ -435,7 +435,7 @@ ___
 
 ▸ **trace**(`lid`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:53
+Defined in log.ts:51
 
 **Parameters:**
 
@@ -452,7 +452,7 @@ ___
 
 ▸ **warn**(`lid`: string[], ...`value`: any[]): *void*
 
-Defined in log.ts:54
+Defined in log.ts:52
 
 **Parameters:**
 

@@ -1,4 +1,4 @@
-import { load } from "@listener-js/listener"
+import { load, reset } from "@listener-js/listener"
 import log from "../"
 
 class Test {
@@ -9,7 +9,10 @@ class Test {
 
 const t = new Test()
 
-load([], { log, t })
+beforeEach(() => {
+  reset([])
+  load([], { log, t })
+})
 
 test("log", (): void => {
   log.logLevel([], "internal")
@@ -36,13 +39,13 @@ test("log any event at log level debug", (): void => {
 })
 
 test("set log level for specific event names", (): void => {
-  log.logLevel([], "Test.hi", "info")
+  log.logLevel([], "t.hi", "info")
   t.hi(["test", "id"])
 })
 
 test("set log filter", (): void => {
-  log.filter = log["getFilter"]("debug:ids:Test.hi")
-  expect(log.filter).toBe("Test.hi")
+  log.filter = log["getFilter"]("debug:ids:t.hi")
+  expect(log.filter).toBe("t.hi")
   t.hi(["should", "see", "this"])
   log.log([], "debug", "SHOULDN'T SEE THIS")
 })
