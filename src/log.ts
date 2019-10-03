@@ -1,6 +1,6 @@
 import {
   Listener,
-  ListenerBind,
+  ListenerBindings,
 } from "@listener-js/listener"
 
 export class Log {
@@ -235,7 +235,7 @@ export class Log {
   private listenerBindings(
     lid: string[],
     instanceId: string
-  ): ListenerBind {
+  ): ListenerBindings {
     return [
       [["**"], `${instanceId}.all`, { prepend: 1000 }],
     ]
@@ -243,6 +243,7 @@ export class Log {
 
   private listenerLoaded(
     lid: string[],
+    listener: Listener,
     instanceId: string
   ): void {
     this.instanceId = instanceId

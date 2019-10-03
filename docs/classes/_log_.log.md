@@ -284,7 +284,7 @@ ___
 
 ### `Private` listenerBindings
 
-▸ **listenerBindings**(`lid`: string[], `instanceId`: string): *ListenerBind*
+▸ **listenerBindings**(`lid`: string[], `instanceId`: string): *ListenerBindings*
 
 Defined in log.ts:235
 
@@ -295,13 +295,13 @@ Name | Type |
 `lid` | string[] |
 `instanceId` | string |
 
-**Returns:** *ListenerBind*
+**Returns:** *ListenerBindings*
 
 ___
 
 ### `Private` listenerLoaded
 
-▸ **listenerLoaded**(`lid`: string[], `instanceId`: string): *void*
+▸ **listenerLoaded**(`lid`: string[], `listener`: Listener, `instanceId`: string): *void*
 
 Defined in log.ts:244
 
@@ -310,6 +310,7 @@ Defined in log.ts:244
 Name | Type |
 ------ | ------ |
 `lid` | string[] |
+`listener` | Listener |
 `instanceId` | string |
 
 **Returns:** *void*
@@ -320,7 +321,7 @@ ___
 
 ▸ **listenerReset**(`lid`: string[]): *void*
 
-Defined in log.ts:251
+Defined in log.ts:252
 
 **Parameters:**
 
@@ -403,7 +404,7 @@ ___
 
 ▸ **stringify**(`o`: any): *string*
 
-Defined in log.ts:259
+Defined in log.ts:260
 
 **Parameters:**
 
@@ -419,7 +420,7 @@ ___
 
 ▸ **summarize**(`arr`: any[]): *string[]*
 
-Defined in log.ts:279
+Defined in log.ts:280
 
 **Parameters:**
 
