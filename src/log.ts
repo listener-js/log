@@ -1,11 +1,12 @@
 import {
   Listener,
   ListenerBindings,
+  ListenerEvent,
 } from "@listener-js/listener"
 
 export class Log {
   public defaultLevel = "info"
-  public instanceId: string
+  public id: string
   public filter?: string
   public listener: Listener
   public strategy = "ids"
@@ -53,15 +54,15 @@ export class Log {
 
   public all(lid: string[], ...value: any[]): void {
     if (
-      !this.instanceId ||
-      lid.indexOf(`${this.instanceId}.log`) > -1 ||
-      lid.indexOf(`${this.instanceId}.logEvent`) > -1
+      !this.id ||
+      lid.indexOf(`${this.id}.log`) > -1 ||
+      lid.indexOf(`${this.id}.logEvent`) > -1
     ) {
       return
     }
 
     const fnId = lid[1] as string
-    const regex = new RegExp(`${this.instanceId}\\.(.+)`)
+    const regex = new RegExp(`${this.id}\\.(.+)`)
     const match = fnId.match(regex)
 
     let fnLevel
@@ -85,7 +86,7 @@ export class Log {
     level?: string,
     ...value: any[]
   ): void {
-    if (lid.indexOf(`${this.instanceId}.logEvent`) > -1) {
+    if (lid.indexOf(`${this.id}.logEvent`) > -1) {
       return
     }
 
@@ -132,7 +133,7 @@ export class Log {
     }
 
     const directCall = fnId.match(
-      new RegExp(`^${this.instanceId}\\.`)
+      new RegExp(`^${this.id}\\.`)
     )
 
     let extra = []
@@ -234,24 +235,14 @@ export class Log {
 
   private listenerBindings(
     lid: string[],
-    instanceId: string
+    { instance }: ListenerEvent
   ): ListenerBindings {
     return [
-      [["**"], `${instanceId}.all`, { prepend: 1000 }],
+      [["**"], `${instance.id}.all`, { prepend: 1000 }],
     ]
   }
 
-  private listenerLoaded(
-    lid: string[],
-    listener: Listener,
-    instanceId: string
-  ): void {
-    this.instanceId = instanceId
-  }
-
   public listenerReset(lid: string[]): void {
-    delete this.instanceId
-
     this.defaultLevel = this.getLevel(process.env.LOG)
     this.filter = this.getFilter(process.env.LOG)
     this.strategy = this.getStrategy(process.env.LOG)
