@@ -1,6 +1,5 @@
 import {
   Listener,
-  ListenerBindings,
   ListenerEvent,
 } from "@listener-js/listener"
 
@@ -8,7 +7,6 @@ export class Log {
   public defaultLevel = "info"
   public id: string
   public filter?: string
-  public listener: Listener
   public strategy = "ids"
 
   public eventLevels: Record<string, string> = {}
@@ -233,13 +231,15 @@ export class Log {
     return this.levels.indexOf(level) > -1
   }
 
-  private listenerBindings(
+  private listenerBeforeLoaded(
     lid: string[],
-    { instance }: ListenerEvent
-  ): ListenerBindings {
-    return [
-      [["**"], `${instance.id}.all`, { prepend: 1000 }],
-    ]
+    { instance, listener }: ListenerEvent
+  ): void {
+    listener.bind(
+      lid,
+      ["**"],
+      [`${instance.id}.all`, { prepend: 1000 }]
+    )
   }
 
   public listenerReset(lid: string[]): void {
