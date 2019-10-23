@@ -1,7 +1,4 @@
-import {
-  Listener,
-  ListenerEvent,
-} from "@listener-js/listener"
+import { ListenerEvent } from "../node_modules/@listener-js/listener/dist/index"
 
 export class Log {
   public defaultLevel = "info"

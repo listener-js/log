@@ -1,5 +1,6 @@
+import expect from "expect"
 import { load, reset } from "@listener-js/listener"
-import log from "../"
+import log from "../src/log"
 
 class Test {
   public hi(lid: string[]): string[] {
@@ -14,7 +15,7 @@ beforeEach(() => {
   load([], { log, t })
 })
 
-test("log", (): void => {
+it("log", (): void => {
   log.logLevel([], "internal")
   log.debug([], "what up")
   log.log([], "internal")
@@ -33,17 +34,17 @@ test("log", (): void => {
   log.error([], "this is a string that is longer than 20")
 })
 
-test("log any event at log level debug", (): void => {
+it("log any event at log level debug", (): void => {
   log.logLevel([], "debug")
   t.hi(["test", "id"])
 })
 
-test("set log level for specific event names", (): void => {
+it("set log level for specific event names", (): void => {
   log.logLevel([], "t.hi", "info")
   t.hi(["test", "id"])
 })
 
-test("set log filter", (): void => {
+it("set log filter", (): void => {
   log.filter = log["getFilter"]("debug:ids:t.hi")
   expect(log.filter).toBe("t.hi")
   t.hi(["should", "see", "this"])
