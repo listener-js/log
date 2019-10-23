@@ -17,7 +17,7 @@ npx tsc -m es6
 sed -i '' "s/$REPLACE_WITH/$REPLACE/g" ./src/log.ts
 
 npx rollup ./dist/log.js --context this --file $MJS -f esm
-npx terser $MJS --compress -m reserved=['lid','_lid'] -o $MJS
+npx terser $MJS --compress -m reserved=['lid','lid_'] -o $MJS
 
 rm -rf dist
 npx tsc
