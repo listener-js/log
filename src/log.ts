@@ -147,7 +147,7 @@ export class Log {
     // eslint-disable-next-line no-console
     console.log(
       this.levelEmojis[level] + this.levelSpaces[level],
-      slicedId.join("\x1b[90m ⇦ \x1b[0m"),
+      slicedId.join(" ⇦ "),
       ...extra
     )
   }
