@@ -21,9 +21,9 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "@listener-js/listener": "3.5.0",
+    "@listener-js/listener": "3.16.0",
     "@types/mocha": "5.2.7",
-    "@types/node": "12.11.5",
+    "@types/node": "12.11.7",
     "@typescript-eslint/eslint-plugin": "2.5.0",
     "@typescript-eslint/parser": "2.5.0",
     "acorn": "7.1.0",
@@ -36,7 +36,7 @@
     "mocha": "6.2.2",
     "prettier": "1.18.2",
     "release-it": "12.4.3",
-    "rollup": "1.25.1",
+    "rollup": "1.25.2",
     "semver": "6.3.0",
     "terser": "4.3.9",
     "ts-node": "8.4.1",
