@@ -1,6 +1,6 @@
 import expect from "expect"
 import { load, reset } from "@listener-js/listener"
-import log from "../src/log"
+import log from "../src"
 
 class Test {
   public hi(lid: string[]): string[] {
